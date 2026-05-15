@@ -1,0 +1,676 @@
+%\usepackage[unicode,psdextra]{hyperref}
+\usepackage{wrapfig}
+% Parentheses
+\newcommand{\abs}[1]{\left |{#1}\right |}
+\newcommand{\bc}[1]{\left\{{#1}\right\}}
+\newcommand{\br}[1]{\left({#1}\right)}
+\newcommand{\bs}[1]{\left[{#1}\right]}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\bsd}[1]{\left\llbracket{#1}\right\rrbracket}
+\newcommand{\ip}[2]{\left\langle{#1},{#2}\right\rangle}
+\newcommand{\inner}[1]{\langle#1\rangle}
+% Statistics notation
+% Probabilities
+\renewcommand{\P}[1]{\mathbb{P}\bs{{#1}}}
+\newcommand{\Pp}[2]{\underset{#1}{\mathbb{P}}\bs{{#2}}}
+\newcommand{\Ppp}[3]{\mathbb{P}_{#1}^{#2}\bs{{#3}}}
+% Expectations
+\newcommand{\Ee}[2]{\underset{#1}{\mathbb{E}}\bs{{#2}}}
+\newcommand{\Eee}[2]{\mathbb{E}_{#1}\bs{{#2}}}
+\newcommand{\sspace}{\mcf{X}}     % state space
+\newcommand{\aspace}{\mcf{A}}     % action space
+\newcommand{\wspace}{\mcf{W}}     % cost weights space
+\newcommand{\histspace}{\mcf{H}}
+\usepackage{dsfont}% history space
+% argmin and argmax
+
+
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{multirow}
+\newcounter{protocol}
+\makeatletter
+\newenvironment{protocol}[1][htb]{%
+  \let\c@algorithm\c@protocol
+  \renewcommand{\ALG@name}{Protocol}% Update algorithm name
+  \begin{algorithm}[#1]%
+  }{\end{algorithm}
+}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{setspace}
+
+%\usepackage{subcaption}
+%\usepackage{selectp}
+%\outputonly{1-18}
+% \newtheorem{theorem}
+%{\protect\theoremname}
+%\newtheorem*{openquestion}{Open Question}
+%   \newtheorem{defn}{\protect\definitionname}
+%   \newtheorem{proposition}{\protect\propositionname}
+%   \newtheorem{example}{\protect\examplename}
+%   \newtheorem{remark}{Remark}
+%   \newtheorem{conditions}{\protect\conditionsname}
+    
+%     \newenvironment{proofof}[1]{\begin{proof}[{#1}]}{\end{proof}}
+    
+% \providecommand{\definitionname}{Definition}
+% \providecommand{\examplename}{Example}
+
+% \providecommand{\propositionname}{Proposition}
+% \providecommand{\conditionsname}{Conditions}
+% \providecommand{\theoremname}{Theorem}
+% \providecommand{\assumptionname}{Assumption}
+
+\def \M{\mathcal{M}}
+\def \S{\mathcal{S}}
+
+\newcommand{\sigmoid}{\sigma}
+% to compile a preprint version, e.g., for submission to arXiv, add add the
+% [preprint] option:
+%     \usepackage[preprint]{neurips_2022}
+
+
+% to compile a camera-ready version, add the [final] option, e.g.:
+%     \usepackage[final]{neurips_2022}
+
+
+% to avoid loading the natbib package, add option nonatbib:
+%    \usepackage[nonatbib]{neurips_2022}
+
+%commands from AK
+%====================================================================================================================================================================================
+%new
+%state space S 
+\newcommand{\qv}{\mbf{q}}
+\newcommand{\dv}{\mbf{d}}
+\newcommand{\dve}{\mbf{d}^E}
+\newcommand{\trans}{T}
+\newcommand{\qval}{\mbf{Q}}
+\newcommand{\FEV}[1]{\mbs{\rho}_{\phim}(#1)}
+\newcommand{\EFEV}[1]{\mbs{\rho}_{\phim}(\widehat{#1})}
+%==============================================================================
+%old
+\newcommand{\mcf}{\mathcal}
+\newcommand{\mbf}{\mathbf}
+\newcommand{\mbb}{\mathbb}
+
+\newcommand{\innerprod}[2]{\left\langle{#1},{#2}\right\rangle}
+
+\newcommand{\apprentice}{\pi_{\textup{A}}}
+\newcommand{\mbs}{\boldsymbol}
+\newcommand{\cost}{r}
+\newcommand{\true}{r}
+\newcommand{\weight}{w}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\phim}{\Phi}
+\newcommand{\initial}{\nu_0}
+
+\newcommand{\wtrue}{\weight_{\textup{true}}}
+ %========================================================
+\newcommand{\norm}[1]{\left\| {#1} \right\|}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts      
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{array}                                  
+\newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
+%\newcolumntype{C}[1]{>{\PreserveBackslash\centering}m{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}} 
+
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{R}[1]{>{\PreserveBackslash\raggedleft}p{#1}}
+\newcolumntype{L}[1]{>{\PreserveBackslash\raggedright}p{#1}}
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage[table]{xcolor}         % colors
+
+\usepackage{mathtools}% http://ctan.org/pkg/mathtools
+
+\usepackage{amsthm}
+\allowdisplaybreaks[4]
+\usepackage{thm-restate}
+%\usepackage{thmtools}
+\usepackage{tcolorbox}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue}
+\usepackage[capitalize,noabbrev]{cleveref}
+\usepackage{url}
+\usepackage{subcaption}
+\usepackage{cancel}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{Lem}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\crefname{assumption}{Assumption}{Assumptions}
+\Crefname{assumption}{Assumption}{Assumptions}
+
+\newtheorem{example}[theorem]{Example}
+\usepackage[textsize=tiny]{todonotes}
+
+% Graph
+\def\gA{{\mathcal{A}}}
+\def\gB{{\mathcal{B}}}
+\def\gC{{\mathcal{C}}}
+\def\gD{{\mathcal{D}}}
+\def\gE{{\mathcal{E}}}
+\def\gF{{\mathcal{F}}}
+\def\gG{{\mathcal{G}}}
+\def\gH{{\mathcal{H}}}
+\def\gI{{\mathcal{I}}}
+\def\gJ{{\mathcal{J}}}
+\def\gK{{\mathcal{K}}}
+\def\gL{{\mathcal{L}}}
+\def\gM{{\mathcal{M}}}
+\def\gN{{\mathcal{N}}}
+\def\gO{{\mathcal{O}}}
+\def\gP{{\mathcal{P}}}
+\def\gQ{{\mathcal{Q}}}
+\def\gR{{\mathcal{R}}}
+\def\gS{{\mathcal{S}}}
+\def\gT{{\mathcal{T}}}
+\def\gU{{\mathcal{U}}}
+\def\gV{{\mathcal{V}}}
+\def\gW{{\mathcal{W}}}
+\def\gX{{\mathcal{X}}}
+\def\gY{{\mathcal{Y}}}
+\def\gZ{{\mathcal{Z}}}
+\def\piref{\pi_{\mathrm{ref}}}
+\def\piout{\pi_{\mathrm{out}}}
+\def\piouth{\pi_{\mathrm{out},h}}
+\def\sP{{\mathbb{P}}}
+\def\sD{{\mathbb{D}}}
+
+% Till
+\definecolor{mgh}{rgb}{0.1,0.5,0.1}%{0.1,0.1,0.8}
+\newcommand{\mgh}[1]{{\color{mgh}{[MGH: #1]}}}
+\newcommand{\mghtd}[2][inline]{\todo[color=mgh!40,#1]{MGH: #2}}
+\newcommand{\mghtdd}[1]{\todo[color=mgh!40]{MGH: #1}}
+\newcommand{\pidata}{\pi_{\mathrm{data}}}
+% Luca
+\definecolor{lu}{rgb}{0.8,0.1,0.1}
+\newcommand{\lu}[1]{{\color{lu}{#1}}}
+\newcommand{\lutd}[1]{\todo[color=lu!40,inline]{Lu: #1}}
+\newcommand{\lutdd}[1]{\todo[color=lu!40]{Lu: #1}}
+
+% Giorgia
+\definecolor{gr}{rgb}{0.4,0.7,0.2}
+\newcommand{\gr}[1]{{\color{gr}{#1}}}
+\newcommand{\grtd}[2][inline]{\todo[color=gr!40,#1]{GR: #2}}
+\newcommand{\grtdd}[1]{\todo[color=wa!40]{GR: #1}}
+
+% Matthieu
+\definecolor{st}{rgb}{0.1,0.5,0.1}
+\newcommand{\st}[1]{{\color{st}{#1}}}
+\newcommand{\sttd}[2][inline]{\todo[color=sw!40,#1]{SW: #2}}
+\newcommand{\sttdd}[1]{\todo[color=sw!40]{SW: #1}}
+
+
+\definecolor{greenp}{rgb}{0.0, 0.51, 0.5}
+
+\newcommand{\argmin}{\mathop{\rm argmin}}
+\newcommand{\argmax}{\mathop{\rm argmax}}
+
+\newcommand{\expert}{\operatorname{E}}
+\newcommand{\expertp}{{\pi_E}}
+\newcommand{\experti}{\pi_E^i}
+\newcommand{\piE}{\pi^{\expert}}
+\newcommand{\muE}{\mu^{\expert}}
+\newcommand{\nuE}{\nu^{\expert}}
+
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\RMAX}{R_{\max}}
+\newcommand{\ptie}{\mathfrak{p}_{\mathrm{tie}}}
+\newcommand{\pess}{\mathrm{pess}}
+\newcommand{\RS}{\mathrm{RS}}
+\usepackage{makecell}
+
+ % MAIL quantities
+ \newcommand{\cphimax}{C_{\phi, \max}}
+ 
+ \newcommand{\fn}{\mathcal{F}_{n-1}}
+
+
+% caligraphic letters
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cQ}{{\mathcal{F}_Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+% blackboard bold letters
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbI}{\mathbb{I}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\bbRnnK}{\mathbb{R}_{\geq 0}^K}
+\newcommand{\bbRpK}{\mathbb{R}_{>0}^K}
+\newcommand{\bbV}{\mathbb{V}}
+\newcommand{\bbZ}{\mathbb{Z}}
+
+\newcommand{\Xeinh}{X_{\scriptscriptstyle\textup{E},h}^{n,i}}
+\newcommand{\Aeinh}{A_{\scriptscriptstyle\textup{E},h}^{n,i}}
+\newcommand{\tauE}{\tau_{\scriptscriptstyle\textup{E}}}
+
+\usepackage{pifont}
+\newcommand{\greentick}{\textcolor{black!30!green}{\ding{51}}}
+\newcommand{\redcross}{\textcolor{red}{\ding{55}}}
+\newcommand{\blackcross}{\ding{55}}
+\def\sP{{\mathbb{P}}}
+\def\sD{{\mathbb{D}}}
+
+\newcommand{\lp}{\left(}
+\newcommand{\rp}{\right)}
+\newcommand{\lb}{\left\{}
+\newcommand{\rb}{\right\}}
+\newcommand{\ls}{\left[}
+\newcommand{\rs}{\right]}
+\newcommand{\labs}{\left|}
+\newcommand{\rabs}{\right|}
+\newcommand{\lnorm}{\left\|}
+\newcommand{\rnorm}{\right\|}
+\newcommand{\expect}{\mathbb{E}}
+\def\TV{\mathrm{TV}}
+
+
+\DeclarePairedDelimiter{\spr}{(}{)}
+\DeclarePairedDelimiter{\sbr}{[}{]}
+\DeclarePairedDelimiter{\sdbr}{[\![}{]\!]}
+\DeclarePairedDelimiter{\scbr}{\{}{\}}
+\newcommand{\abss}[1]{|#1|}                          %absolute value
+\newcommand{\normm}[1]{\lVert#1\rVert}               %norm
+\newcommand{\normbig}[1]{\big\lVert#1\big\rVert}
+\newcommand{\half}{\tfrac{1}{2}}
+
+%\newcommand{\scbr}[1]{\left\{ #1 \right\}}
+\newcommand{\inp}[1]{\left\langle #1 \right\rangle}
+
+% basic algebra symbols
+\newcommand{\sumiK}{\sum_{i=1}^K}
+\newcommand{\sumjK}{\sum_{j=1}^K}
+\newcommand{\sumkK}{\sum_{k=1}^K}
+\newcommand{\sumtT}{\sum_{t=1}^T}
+\newcommand{\sumst}{\sum_{s=1}^t}
+\newcommand{\sumtinfty}{\sum_{t=0}^\infty}
+\newcommand{\sumsinfty}{\sum_{s=0}^\infty}
+
+\usepackage{tikz}
+\usetikzlibrary{automata,arrows, positioning,shapes.geometric, arrows.meta, shadows}
+
+%%%%% GERGO %%%%
+\newcommand{\grg}[1]{\textcolor{red}{[\textbf{Grg:} #1]}}
+\newcommand{\dd}{\mathrm{d}}
+
+\newcommand{\raviUCB}{RAVI-UCB \xspace}
+\newcommand{\RMAXalg}{RMAX \xspace}
+\newcommand{\algname}{RMAX-RAVI-UCB \xspace}
+
+\newcommand{\D}[2]{D\pa{#1\middle\|#2}}
+\newcommand{\DDKL}[2]{D_{\mathrm{KL}}\pa{#1\middle\|#2}}
+%\newcommand{\CB}{\mbox{CB}}
+\newcommand{\CC}{\mathcal{C}}
+\newcommand{\TT}{\mathcal{T}}
+\newcommand{\GG}{\mathcal{G}}
+\newcommand{\tGG}{\wt{\GG}}
+\newcommand{\ttheta}{\wt{\theta}}
+\newcommand{\btheta}{\overline{\theta}}
+\newcommand{\tlambda}{\wt{\lambda}}
+\newcommand{\blambda}{\overline{\lambda}}
+\newcommand{\bmu}{\overline{\mu}}
+\newcommand{\tQ}{\wt{Q}}
+\newcommand{\tV}{\wt{V}}
+\newcommand{\tpi}{\wt{\pi}}
+\newcommand{\td}{\wt{d}}
+\newcommand{\tr}{r^+}
+\newcommand{\thr}{{\hr}^+}
+\newcommand{\trho}{\wt{\rho}}
+\newcommand{\trunc}[2]{\left[#1\right]_{#2}}
+
+
+\newcommand{\Plin}{\mathcal{P}_{\Phi}}
+
+
+\newcommand{\Hil}{\mathcal{H}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\real}{\mathbb{R}}
+\newcommand{\Dw}{\mathcal{D}}
+%\newcommand{\Sw}{\mathcal{S}}
+\newcommand{\Rw}{\mathcal{R}}
+\newcommand{\HH}{\mathcal{H}}
+\newcommand{\DD}{\mathcal{D}}
+\newcommand{\OO}{\mathcal{O}}
+\newcommand{\tOO}{\wt{\OO}}
+\newcommand{\trace}[1]{\mbox{tr}\left(#1\right)}
+\newcommand{\II}[1]{\mathds{I}_{\left\{#1\right\}}}
+\newcommand{\PP}[1]{\mathbb{P}\left[#1\right]}
+\newcommand{\PPZ}[1]{\mathbb{P}_Z\left[#1\right]}
+\newcommand{\EEZ}[1]{\mathbb{E}_Z\left[#1\right]}
+\newcommand{\EE}[1]{\mathbb{E}\left[#1\right]}
+\newcommand{\EEb}[1]{\mathbb{E}\bigl[#1\bigr]}
+\newcommand{\EEtb}[1]{\mathbb{E}_t\bigl[#1\bigr]}
+\newcommand{\EXP}{\mathbb{E}}
+\newcommand{\EEs}[2]{\mathbb{E}_{#2}\left[#1\right]}
+\newcommand{\EEu}[1]{\mathbb{E}_{\u}\left[#1\right]}
+\newcommand{\EEst}[1]{\mathbb{E}_{*}\left[#1\right]}
+\newcommand{\EEo}[1]{\mathbb{E}_{0}\left[#1\right]}
+\newcommand{\PPt}[1]{\mathbb{P}_t\left[#1\right]}
+\newcommand{\EEt}[1]{\mathbb{E}_t\left[#1\right]}
+\newcommand{\EEtt}[1]{\mathbb{E}_{t-1}\left[#1\right]}
+\newcommand{\PPi}[1]{\mathbb{P}_i\left[#1\right]}
+\newcommand{\EEi}[1]{\mathbb{E}_i\left[#1\right]}
+\newcommand{\PPc}[2]{\mathbb{P}\left[#1\left|#2\right.\right]}
+\newcommand{\PPs}[2]{\mathbb{P}_{#2}\left[#1\right]}
+\newcommand{\PPcs}[3]{\mathbb{P}_{#3}\left[#1\left|#2\right.\right]}
+\newcommand{\PPct}[2]{\mathbb{P}_t\left[#1\left|#2\right.\right]}
+\newcommand{\PPcc}[2]{\mathbb{P}\left[\left.#1\right|#2\right]}
+\newcommand{\PPcct}[2]{\mathbb{P}_t\left[\left.#1\right|#2\right]}
+\newcommand{\PPcci}[2]{\mathbb{P}_i\left[\left.#1\right|#2\right]}
+\newcommand{\EEc}[2]{\mathbb{E}\left[#1\left|#2\right.\right]}
+\newcommand{\EEcc}[2]{\mathbb{E}\left[\left.#1\right|#2\right]}
+\newcommand{\EEcs}[3]{\mathbb{E}_{#3}\left[\left.#1\right|#2\right]}
+\newcommand{\EEcct}[2]{\mathbb{E}_t\left[\left.#1\right|#2\right]}
+\newcommand{\EEcctt}[2]{\mathbb{E}_{t-1}\left[\left.#1\right|#2\right]}
+\newcommand{\EEcci}[2]{\mathbb{E}_i\left[\left.#1\right|#2\right]}
+\renewcommand{\th}{\ensuremath{^{\mathrm{th}}}}
+\def\argmin{\mathop{\mbox{ arg\,min}}}
+\def\argmax{\mathop{\mbox{ arg\,max}}}
+\newcommand{\ra}{\rightarrow}
+
+\newcommand{\bone}{\bm{1}}
+
+\newcommand{\siprod}[2]{\langle#1,#2\rangle}
+\newcommand{\iprod}[2]{\left\langle#1,#2\right\rangle}
+\newcommand{\biprod}[2]{\bigl\langle#1,#2\bigr\rangle}
+\newcommand{\Biprod}[2]{\Bigl\langle#1,#2\Bigr\rangle}
+\newcommand{\onenorm}[1]{\norm{#1}_1}
+\newcommand{\twonorm}[1]{\norm{#1}_2}
+\newcommand{\infnorm}[1]{\norm{#1}_\infty}
+\newcommand{\spannorm}[1]{\norm{#1}_{\text{sp}}}
+\newcommand{\opnorm}[1]{\norm{#1}_{\text{op}}}
+\newcommand{\Hnorm}[1]{\norm{#1}_{\HH}}
+\newcommand{\ev}[1]{\left\{#1\right\}}
+\newcommand{\pa}[1]{\left(#1\right)}
+\newcommand{\bpa}[1]{\bigl(#1\bigr)}
+\newcommand{\Bpa}[1]{\Bigl(#1\Bigr)}
+\newcommand{\BPA}[1]{\Biggl(#1\Biggr)}
+\newcommand{\sign}{\mbox{sign}}
+
+\newcommand{\wh}{\widehat}
+\newcommand{\wt}{\widetilde}
+
+
+\newcommand{\loss}{\ell}
+\newcommand{\hloss}{\wh{\loss}}
+
+
+\newcommand{\lambdamin}{\lambda_{\min}}
+\newcommand{\lambdamax}{\lambda_{\max}}
+\newcommand{\hr}{\wh{r}}
+\newcommand{\hR}{\wh{R}}
+\newcommand{\tx}{\wt{x}}
+\newcommand{\tX}{\wt{X}}
+\newcommand{\htheta}{\wh{\theta}}
+\newcommand{\hq}{\wh{q}}
+\newcommand{\hv}{\wh{v}}
+\newcommand{\hTheta}{\wh{\Theta}}
+\newcommand{\hf}{\wh{f}}
+\newcommand{\hs}{\wh{s}}
+\newcommand{\bA}{\overline{A}}
+\newcommand{\bW}{\overline{\W}}
+\newcommand{\deff}{d_{\text{eff}}}
+
+\newcommand{\Sp}{\Sigma^+}
+
+\newcommand{\Cinf}{C_\infty}
+\newcommand{\tw}{\wt{w}}
+\newcommand{\hM}{\wh{M}}
+\newcommand{\hT}{\wh{T}}
+\newcommand{\tM}{\wt{M}}
+\newcommand{\bw}{\overline{w}}
+\newcommand{\hX}{\wh{X}}
+\newcommand{\hZ}{\wh{Z}}
+\newcommand{\tZ}{\wt{Z}}
+\newcommand{\hmu}{\wh{\mu}}
+\newcommand{\tmu}{\wt{\mu}}
+\newcommand{\hP}{\wh{P}}
+\newcommand{\tP}{P^+}
+\newcommand{\thP}{{\hP}^+}
+\newcommand{\hS}{\wh{\Sigma}}
+\newcommand{\hw}{\wh{w}}
+\newcommand{\hx}{\wh{\boldsymbol{x}}}
+\newcommand{\hQ}{\wh{Q}}
+\newcommand{\transpose}{^T}
+
+%\usepackage{todonotes}
+\definecolor{PalePurp}{rgb}{0.66,0.57,0.66}
+%\newcommand{\todoG}[1]{\todo[color=PalePurp!30]{#1}}
+%\newcommand{\todoGI}[1]{\todo[inline,color=PalePurp!30]{#1}}
+\newcommand{\redd}[1]{\textcolor{red}{#1}}
+\newcommand{\bblue}[1]{\textcolor{blue}{#1}}
+
+%\newcommand{\regret}{\mathrm{regret}}
+\newcommand{\regret}{\mathfrak{R}_K}
+\newcommand{\regretK}{\mathfrak{R}_K}
+
+%\newcommand{\qed}{\hfill\BlackBox\\[2mm]}
+
+\newcommand{\R}{\boldsymbol{R}}
+
+
+\newcommand{\hL}{\wh{L}}
+
+\newcommand{\expexpexp}{\textsc{Exp3}\xspace}
+\newcommand{\linexprl}{\textsc{LinExp3RL}\xspace}
+\newcommand{\linexpreal}{\textsc{RealLinExp3}\xspace}
+\newcommand{\linexprobust}{\textsc{RobustLinExp3}\xspace}
+\newcommand{\linucb}{\textsc{LinUCB}\xspace}
+
+%%%%ANTOINE%%%%
+
+\newcommand{\antoine}[1]{%
+    \ifmmode
+    \text{\textcolor{blue}{[Antoine: #1]}}
+    \else
+    \textcolor{blue}{[Antoine: #1]}
+    \fi
+}
+
+\newcommand{\tmpassumption}[1]{%
+    \ifmmode
+    \text{\textcolor{orange}{[Assumption: #1]}}
+    \else
+    \textcolor{orange}{[Assumption: #1]}
+    \fi
+}
+
+% common abbreviations
+\makeatletter
+\DeclareRobustCommand\onedot{\futurelet\@let@token\@onedot}
+\def\@onedot{\ifx\@let@token.\else.\null\fi\xspace}
+
+\def\cf{c.f. }
+\def\eg{e.g. }
+\def\etal{et al. }
+\def\etc{etc. }
+\def\ie{i.e. }
+\def\wrt{i.i.d. }
+\def\vs{vs }
+\def\wrt{w.r.t }
+\makeatother
+
+% \newcommand{\wh}[1]{\widehat{#1}}
+\usepackage{mathtools}  % for '\mathrlap' command (necessary)
+\newcommand{\custombar}[3]{%
+    \mathrlap{\hspace{#2}\overline{\scalebox{#1}[1]{\phantom{\ensuremath{#3}}}}}\ensuremath{#3}
+} % random example: \custombar{0.8}{.5pt}{y}
+
+
+% bold letters
+\newcommand{\bfone}{\mathbf{1}}
+\newcommand{\bfe}{\mathbf{e}}
+\newcommand{\bfu}{\mathbf{u}}
+\newcommand{\bfv}{\mathbf{v}}
+\newcommand{\bfw}{\mathbf{w}}
+\newcommand{\bfx}{\mathbf{x}}
+\newcommand{\bfy}{\mathbf{y}}
+\newcommand{\bfyt}{\mathbf{y}_t}
+
+% caligraphic letters
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cW}{\mathcal{W}}
+
+% fraktur letters
+\newcommand{\fkB}{\mathfrak{B}}
+\newcommand{\fkR}{\mathfrak{R}}
+
+% math operators
+% \DeclareMathOperator*{\argmax}{arg\,max}
+% \DeclareMathOperator*{\argmin}{arg\,min}
+% \DeclareMathOperator{\opE}{E}
+% \DeclareMathOperator{\opP}{P}
+% \DeclareMathOperator{\ophP}{\widehat{P}}
+% \DeclareMathOperator{\ophPt}{\widehat{P}_t}
+% \DeclareMathOperator{\ophPk}{\widehat{P}_k}
+% \DeclareMathOperator{\opPplus}{P_t^\mathsf{\scriptscriptstyle +}}
+% \DeclareMathOperator{\opPplusk}{P_k^\mathsf{\scriptscriptstyle +}}
+% \DeclareMathOperator{\ophPplus}{\widehat{P}_t^\mathsf{\scriptscriptstyle +}}
+% \DeclareMathOperator{\ophPplusk}{\widehat{P}_k^\mathsf{\scriptscriptstyle +}}
+
+\newcommand{\opE}{E}
+\newcommand{\opP}{P}
+\newcommand{\ophP}{\widehat{P}}
+\newcommand{\ophPt}{\widehat{P}_t}
+\newcommand{\ophPk}{\widehat{P}_k}
+\newcommand{\opPplus}{P_t^\mathsf{\scriptscriptstyle +}}
+\newcommand{\opPplusk}{P_k^\mathsf{\scriptscriptstyle +}}
+\newcommand{\ophPplus}{\widehat{P}_t^\mathsf{\scriptscriptstyle +}}
+\newcommand{\ophPplusk}{\widehat{P}_k^\mathsf{\scriptscriptstyle +}}
+
+
+
+\DeclareMathOperator{\co}{co}
+\DeclareMathOperator{\optrace}{trace}
+\DeclareMathOperator{\Diag}{Diag}  % diagonal matrices
+\DeclareMathOperator{\diam}{diam}  % diameter
+\DeclareMathOperator{\dom}{dom}  % domain
+\DeclareMathOperator{\interior}{int}
+\DeclareMathOperator{\Lip}{Lip} % lipschitz
+\DeclareMathOperator{\scvx}{sc}  % strong convexity
+% \DeclareMathOperator{\regret}{\texttt{regret}}
+\DeclareMathOperator{\regretplus}{\mathfrak{R}_T^\mathsf{\scriptscriptstyle +}}
+\DeclareMathOperator{\regretKplus}{\mathfrak{R}_K^\mathsf{\scriptscriptstyle +}}
+\DeclareMathOperator{\regretIL}{\mathfrak{R}_K^\mathrm{I\hspace{.05em}L}}%\regretK^{\mathrm{I\hspace{.05em}L}}}
+% \DeclareMathOperator{\sign}{sign}
+% \DeclareMathOperator{\tr}{tr}  % trace
+\DeclareMathOperator{\CB}{CB}
+\DeclareMathOperator{\kl}{kl}
+\DeclareMathOperator{\KL}{D_{\mathrm{KL}}}
+% others
+\newcommand{\simplex}{\Delta}
+\newcommand{\piunif}{\pi_{\texttt{unif}}}
+\newcommand{\QMAX}{Q_{\max}}
+%\newcommand{\VMAX}{V_{\max}}
+\newcommand{\VMAX}{Q_{\max}}
+\newcommand{\LMAX}{L_{\max}}
+\newcommand{\WMAX}{W_{\max}}
+\newcommand{\reset}{reset\xspace}
+\DeclareMathOperator{\LSE}{LSE}
+
+\newcommand{\regretpi}{\mathfrak{R}^\pi_K}
+\newcommand{\regretQ}{\mathfrak{R}^Q_K}
+\newcommand{\hatgk}{\widehat{g}_k}
+
+
+%\newcommand{\ThetaMAX}{\Theta_{\max}}
+\newcommand{\ThetaMAX}{B_\theta}
+\newcommand{\phiMAX}{B_\phi}
+
+\newcommand{\Pilin}{\Pi_{\textup{lin}}}
+\newcommand{\Qlin}{\cQ_{\textup{lin}}}
+
+% algorithms
+%\newcommand{\PDOIL}{\texttt{PDOIL}\xspace}
+\newcommand{\SPOIL}{SPOIL }
+\newcommand{\BC}{BC }
+\newcommand{\IQLearn}{IQ-Learn }
+\newcommand{\PIL}{P$^2$IL }
+\newcommand{\SoftDQN}{Soft DQN }
+\newcommand{\FRAalg}{FRA-IL }
+\newcommand{\cartpole}{CartPole-v1} 
+\newcommand{\acrobot}{Acrobot-v1} 
+\newcommand{\lunarlander}{LunarLander-v2} 
+
+\newcommand{\PiE}{{\Pi^{\scriptscriptstyle\textup{E}}}}
+\newcommand{\PiElin}{{\Pi^{\scriptscriptstyle\textup{E}}_{\textup{lin}}}}
+\newcommand{\PiENN}{{\Pi^{\scriptscriptstyle\textup{E}}_{\scriptscriptstyle\textup{NN}}}}
+\newcommand{\XEi}{X_{\scriptscriptstyle\textup{E}}^i}
+\newcommand{\AEi}{A_{\scriptscriptstyle\textup{E}}^i}
+\newcommand{\given}{\nonscript\mathpunct{} |\nonscript\mathpunct{}}
+\newtheorem*{assumption*}{\protect\assumptionname}
+\newcommand{\DKL}[2]{D_{\mathrm{KL}}\spr*{#1,#2}}
+\newcommand{\Dhel}[2]{D_{\mathrm{Hel}}\spr*{#1,#2}}
+\newcommand{\Dhels}[2]{D_{\mathrm{Hel}}^2\spr*{#1,#2}}
+\newcommand{\Loss}{\mathcal{L}}
+\newcommand{\hLoss}{\wh{\mathcal{L}}}
+\newcommand{\experth}{{\pi_{\scriptscriptstyle\textup{E}, h}}}
+
+\newcommand{\barexpert}{{\bar{\pi}_{\scriptscriptstyle\textup{E}}}}
+
+
+\DeclareMathOperator{\softmax}{softmax}
+\newcommand{\upplus}{\mathsf{+}} % superscript plus
+% algorithm comments
+\usepackage{transparent}
+\newcommand{\algcomment}[1]{\textcolor{blue!70!black}{\transparent{0.7}\small{\texttt{\textbf{\#\hspace{2pt}#1}}}}}
+\newcommand{\algcommentlight}[1]{\textcolor{blue!70!black}{\transparent{0.5}\footnotesize{\texttt{\textbf{\#\hspace{2pt}#1}}}}}
+\newcommand{\algcommentbig}[1]{\textcolor{blue!70!black}{\footnotesize{\texttt{\textbf{/* #1~*/}}}}}
+\newcommand{\algcommentbiglight}[1]{\textcolor{blue!70!black}{\transparent{0.5}\footnotesize{\texttt{\textbf{/* #1~*/}}}}\vspace{2pt}}
+\newcommand{\algcolor}[1]{\textcolor{blue!70!black}{#1}}
+\newcommand{\algspace}{\hspace{\algorithmicindent}}
+\newcommand{\rewardbias}{\texttt{reward-bias}}
+\newcommand{\modelbias}{\texttt{model-bias}}
+
+\usepackage{pgfplots}
+\usepgfplotslibrary{groupplots}
+\usetikzlibrary{calc} 
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.17}
