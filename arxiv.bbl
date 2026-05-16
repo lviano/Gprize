@@ -1,4 +1,4 @@
-\begin{thebibliography}{24}
+\begin{thebibliography}{33}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -11,6 +11,12 @@ Dario Amodei, Chris Olah, Jacob Steinhardt, Paul Christiano, John Schulman, and
   Dan Man\'e.
 \newblock Concrete problems in {AI} safety.
 \newblock \emph{arXiv:1606.06565}, 2016.
+
+\bibitem[Azar et~al.(2017)Azar, Osband, and Munos]{azar2017minimax}
+Mohammad~Gheshlaghi Azar, Ian Osband, and R{\'e}mi Munos.
+\newblock Minimax regret bounds for reinforcement learning.
+\newblock In \emph{International conference on machine learning}, pages
+  263--272. PMLR, 2017.
 
 \bibitem[Bandura and Walters(1977)]{bandura1977social}
 Albert Bandura and Richard~H Walters.
@@ -26,6 +32,13 @@ Ralph~Allan Bradley and Milton~E Terry.
 \newblock Rank analysis of incomplete block designs: I. the method of paired
   comparisons.
 \newblock \emph{Biometrika}, 39\penalty0 (3/4):\penalty0 324--345, 1952.
+
+\bibitem[Brafman and Tennenholtz(2002)]{brafman2002r}
+Ronen~I Brafman and Moshe Tennenholtz.
+\newblock R-max --- a general polynomial time algorithm for near-optimal
+  reinforcement learning.
+\newblock \emph{Journal of Machine Learning Research}, 3\penalty0
+  (Oct):\penalty0 213--231, 2002.
 
 \bibitem[Bratman(2010)]{bratman2010new}
 Jeshua Bratman.
@@ -65,6 +78,11 @@ Audrey Huang, Wenhao Zhan, Tengyang Xie, Jason~D Lee, Wen Sun, Akshay
   overoptimization via chi-squared preference optimization.
 \newblock \emph{arXiv preprint arXiv:2407.13399}, 2024.
 
+\bibitem[Jin et~al.(2019)Jin, Yang, Wang, and Jordan]{jin2019provably}
+Chi Jin, Zhuoran Yang, Zhaoran Wang, and Michael~I. Jordan.
+\newblock Provably efficient reinforcement learning with linear function
+  approximation, 2019.
+
 \bibitem[Liu et~al.(2024)Liu, Lu, Zhang, Liu, Guo, Yang, Blanchet, and
   Wang]{liu2024provably}
 Zhihan Liu, Miao Lu, Shenao Zhang, Boyi Liu, Hongyi Guo, Yingxiang Yang, Jose
@@ -74,16 +92,30 @@ Zhihan Liu, Miao Lu, Shenao Zhang, Boyi Liu, Hongyi Guo, Yingxiang Yang, Jose
 \newblock \emph{Advances in Neural Information Processing Systems},
   37:\penalty0 138663--138697, 2024.
 
-\bibitem[Moulin et~al.(2025)Moulin, Neu, and Viano]{moulin2025optimistically}
+\bibitem[Moulin et~al.(2025{\natexlab{a}})Moulin, Neu, and
+  Viano]{moulin2025inverseqlearningrightoffline}
+Antoine Moulin, Gergely Neu, and Luca Viano.
+\newblock Inverse q-learning done right: Offline imitation learning in
+  $q^\pi$-realizable mdps, 2025{\natexlab{a}}.
+\newblock URL \url{https://arxiv.org/abs/2505.19946}.
+
+\bibitem[Moulin et~al.(2025{\natexlab{b}})Moulin, Neu, and
+  Viano]{moulin2025optimistically}
 Antoine Moulin, Gergely Neu, and Luca Viano.
 \newblock Optimistically optimistic exploration for provably efficient
   infinite-horizon reinforcement and imitation learning.
-\newblock \emph{arXiv preprint arXiv:2502.13900}, 2025.
+\newblock \emph{arXiv preprint arXiv:2502.13900}, 2025{\natexlab{b}}.
 
 \bibitem[Ng and Russell(2000)]{Ng:2000}
 A.~Y. Ng and S.~J. Russell.
 \newblock Algorithms for inverse reinforcement learning.
 \newblock In \emph{International Conference on Machine Learning (ICML)}, 2000.
+
+\bibitem[Ni et~al.(2021)Ni, Sikchi, Wang, Gupta, Lee, and Eysenbach]{ni2021f}
+Tianwei Ni, Harshit Sikchi, Yufei Wang, Tejus Gupta, Lisa Lee, and Ben
+  Eysenbach.
+\newblock f-irl: Inverse reinforcement learning via state marginal matching.
+\newblock In \emph{Conference on Robot Learning}, pages 529--551. PMLR, 2021.
 
 \bibitem[Osa et~al.(2018)Osa, Pajarinen, Neumann, Bagnell, Abbeel, and
   Peters]{Osa:2018}
@@ -129,6 +161,13 @@ Dhruv Rohatgi, Adam Block, Audrey Huang, Akshay Krishnamurthy, and Dylan~J
   barrier: Autoregressive and imitation learning under misspecification.
 \newblock \emph{arXiv preprint arXiv:2502.12465}, 2025.
 
+\bibitem[Ross et~al.(2011)Ross, Gordon, and Bagnell]{Ross:2011}
+S.~Ross, G.~Gordon, and D.~Bagnell.
+\newblock A reduction of imitation learning and structured prediction to
+  no-regret online learning.
+\newblock In \emph{International Conference on Artificial Intelligence and
+  Statistics (AISTATS)}, 2011.
+
 \bibitem[Russell(1998)]{Russell:1998}
 Stuart Russell.
 \newblock Learning agents for uncertain environments (extended abstract).
@@ -152,6 +191,11 @@ R.~S. Sutton and A.~G. Barto.
 \newblock \emph{Introduction to Reinforcement Learning}.
 \newblock MIT Press, 1st edition, 1998.
 
+\bibitem[Torabi et~al.(2018)Torabi, Warnell, and Stone]{torabi2018behavioral}
+Faraz Torabi, Garrett Warnell, and Peter Stone.
+\newblock Behavioral cloning from observation.
+\newblock \emph{arXiv preprint arXiv:1805.01954}, 2018.
+
 \bibitem[Viano et~al.(2026)Viano, Freihaut, Nevali, Cevher, Geist, and
   Ramponi]{viano2026multi}
 Luca Viano, Till Freihaut, Emanuele Nevali, Volkan Cevher, Matthieu Geist, and
@@ -160,5 +204,15 @@ Luca Viano, Till Freihaut, Emanuele Nevali, Volkan Cevher, Matthieu Geist, and
   markov games and beyond.
 \newblock \emph{Forty-third International Conference on Machine Learning},
   2026.
+
+\bibitem[Watson et~al.(2023)Watson, Huang, and Heess]{watson2023coherent}
+Joe Watson, Sandy~H. Huang, and Nicolas Heess.
+\newblock Coherent soft imitation learning, 2023.
+
+\bibitem[Zeng et~al.(2022)Zeng, Hong, and Garcia]{zeng2022structural}
+Siliang Zeng, Mingyi Hong, and Alfredo Garcia.
+\newblock Structural estimation of markov decision processes in
+  high-dimensional state space with finite-time guarantees.
+\newblock \emph{arXiv preprint arXiv:2210.01282}, 2022.
 
 \end{thebibliography}

@@ -154,11 +154,11 @@ For any state-action pair $\spr*{x, a} \in \cX \times \cA$, they are respectivel
 \end{equation*}
 We now distinguish the learning signal between imitation learning and alignment.
 
-\textbf{Imitation Learning.} In \emph{standard} imitation learning, the learner receives the state-action dataset sampled from the expert occupancy, denoted as $\bc{\XEi,\AEi} \sim \mu^{\expert}$, and we aim to learn a policy $\piout$ such that the performance is close up to a precision $\varepsilon$ to the expert performance.
+\textbf{Imitation Learning.} In \emph{standard} imitation learning, the learner receives the state-action dataset sampled from the expert occupancy, denoted as $\bc{\XEi,\AEi}^{\tauE}_{i=1} \sim \mu^{\expert}$ where $\tauE$ is the total number of expert data, and we aim to learn a policy $\piout$ such that the performance is close up to a precision $\varepsilon$ to the expert performance.
 That is,
-\[
-\mathbb{E}\bs{\sum_{x,a\in \X\times\A} (\mu^{\expertp}(x,a) - \mu^{\piout}(x,a))r(x,a)} \leq \varepsilon,
-\]
+\begin{equation}
+\mathbb{E}\bs{\sum_{x,a\in \X\times\A} (\mu^{\expertp}(x,a) - \mu^{\piout}(x,a))r(x,a)} \leq \varepsilon, \label{eq:optgoal}
+\end{equation}
 where the expectation is over the randomness used by the algorithm to generate $\piout$.To make the setting feel concrete we provide here two examples.
 \begin{example}\textbf{Robotics.} In robotic manipulation, we can consider that the state space is the robot position, the recorded actions are the torques applied from that state to solve the task and 
 the reward is a terminal only function that equal one if the task is solved correctly and zero otherwise.
@@ -347,6 +347,157 @@ In particular, we consider distilling a state-of-the-art Connect4 solver into a 
 \end{figure}
 
 \subsection{Beyond Limitation 2: Imitation Learning from features.}
+A second contribution of my thesis has been solving the imitation learning problem when the expert actions are not observed.
+This enables the use of massively larger dataset containing onloy the states of the expert or more generally only expert features.
+Meaningful features in application could be a frame of a video showing the robot doing a certain task \citep{torabi2018behavioral}.
+Formally, we consider a features map $\phi_r: \X\times\A \rightarrow \mathbb{R}^d$ such that $r$ is linear in $\phi_r$ and assume that the expert only reveals a features dataset $\cD_{\phi} = \bc{\phi_r(X^i_E, A^i_E)}^{\tau_E}_{i=1}$,
+a dataset which is considerably less informative than $\bc{X^i_E, A^i_E}^{\tau_E}_{i=1}$ when the feature map is infomation-lossy as it happens for example when $\phi_r$ represents a video frame.
+Our first fundamental contribution is that, because of the information loss, it is no longer possible to learn 
+without access to the enviroment to estimate the transition dynamics.
+We make this negative result precise in the following.
+\begin{tcolorbox}[
+    colback=orange!10!white,
+    colframe=orange!80!black,
+    %boxrule=0.8pt,
+    %arc=2pt,
+    %boxsep=2pt,
+    %bottom=0pt,
+    width=\linewidth
+  ]
+\begin{theorem} \textbf{Imitation Learning from features requires environment access. \citep{moulin2025optimistically}}
+    For any algorithm $\mathrm{Alg}$ having access only to a features dataset, there exists an MDP and an expert policy such that $\mathrm{Alg}$ needs to sample at least $\Omega(\varepsilon^{-2})$   
+    state-action sequences and $\Omega(\varepsilon^{-2})$ expert features to learn a $\varepsilon$-optimal policy according to the definition in \eqref{eq:optgoal}.
+\end{theorem}
+\end{tcolorbox}
+Moreover, we match this lower bound in both the number of sample state-action trajectories and in terms of expert features observation, i.e. $\tauE$ with a new algorithm
+dubbed FRA-IL \citep{moulin2025optimistically} when the transition dynamics are also linear in same other features map.
+The core idea is to reduce imitation learning to a game between a player that plays a sequence of reward functions and a second one playing a sequence of policies.
+Finding the right updates for the policy player, solved a problem open in RL theory since 5 years \citep{jin2019provably} which consisted of designing no-regret algorithm for infinite horizon MDPs with linear transitions and rewards.
+Key to solve the problem was a new exploration technique combining two classics (UCB \cite{azar2017minimax} and RMAX \citep{brafman2002r}) in a novel way.
+The guarantees for FRA-IL read as follows.
+\begin{tcolorbox}[
+    colback=orange!10!white,
+    colframe=orange!80!black,
+    %boxrule=0.8pt,
+    %arc=2pt,
+    %boxsep=2pt,
+    %bottom=0pt,
+    width=\linewidth
+  ]
+\begin{theorem} \textbf{Rate optimal upper bounds for Imitation Learning from features.\citep{moulin2025optimistically}}
+    For any linear MDP, the algorithm FRA-IL outputs a policy $\piout$ which is $\varepsilon$-optimal sampling $\mathcal{O}(\varepsilon^{-2})$ state-action trajectories and expert features.
+\end{theorem}
+\end{tcolorbox}
+It is important to highlight however that expert interaction as required in the multi agent setting is not needed and the environment rewards are not observed. Only next states are.
+Moreover, the bounds can not be improved in terms of $\varepsilon$ because opf our lower bound. Therefore, FRA-IL is rate optimal.
+
+\paragraph{Practical take-away}
+From the above theoretical analysis, we learn that exploration in the policy update is crucial. In stark contrast existing algorithm were neglecting this aspect.
+We therefore designed, inspired by theory above, a meta algorithm that injects exploration in existing algorithms to learn only from features in simulated robotics.
+Remarkably, as shown in \Cref{fig:SOAR}, we noticed a consistent improvement for any base algorithm on which we applied our exploration routine.
+\begin{figure}[t]
+    \centering
+    
+    \begin{minipage}[T]{0.7\linewidth}
+        \centering
+        \includegraphics[width=0.8\linewidth]{figures/ch2/method_averages_comparison_with_ci.pdf}
+    
+        \vspace{3mm}
+    
+        {\small
+        \tikz[baseline=-0.5ex]{\draw[red, thick] (0,0) -- (0.3,0);} Base IL algorithm
+        \hspace{0.5cm}
+        \tikz[baseline=-0.5ex]{\draw[blue, thick] (0,0) -- (0.3,0);} 
+        Base + \textbf{\textcolor{blue}{ensemble-based exploration}}
+        }
+    \end{minipage}
+    \hfill
+    \begin{minipage}[T]{0.28\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/ch2/mujoco2.png}
+    \end{minipage}
+    
+    \caption{Continuous control imitation learning experiments, results averaged across the 5 environments shown on the right. For any base algorithm considered (CSIL \cite{watson2023coherent}, RKL \cite{ni2021f}, ML-IRL \cite{zeng2022structural}) injecting exploration in the policy updates via critics ensembles leads to faster learning.}
+    \label{fig:SOAR}
+    
+    \end{figure}
+\section{Beyond Limitation 3: IL without mimicking the expert.}
+Folklore imitation learning described above attains the goal in \eqref{eq:optgoal} by 
+matching the expert distribution, i.e. mimicking the expert. In other words, the learner
+trained via BC tries to choose among the available 
+actions with the same probability distribution used by the expert.
+However, this is often not possible; especially when the learner is not capable of representing the expert policy. This can often happen in practice.
+\begin{example}\textbf{Distillation}
+In distillation, a very popular technique in LLMs fine-tuning for mathematical and coding tasks, we train a small model
+given some responses generated by a much larger LLM. Given the difference in sizes, the small model can not really represent
+the reasoning traces of the larger one. Still, it could generate correct responses via other reasoning steps. However, this can clearly not be obtained 
+just maximizing the likelihood of the expert responses. 
+\end{example}
+\begin{example}\textbf{Learning from a privileged expert.}
+In same situation the expert might chooses actions at a given state using external information which is not revealed to the learner, we call this a privileged expert.
+For example, in finance, a human investor acts not only looking at the current status of the market but also according to some internal bias
+or information aquired elsewhere. Without access to such privileges, the learner can not hope to match 
+the expert distribution. However, there is still hope to perform similarly in terms of gained money, even thought by taking different actions.
+\end{example}
+In our NeurIPS 2025 paper, \citep{moulin2025inverseqlearningrightoffline} we invent the first offline imitation learning which does not mimick the expert.
+Formally, the key idea is to avoid assuming access to a class $\PiE$ such that $\expertp \in \PiE$ at the cost of introducing structural assumptions on the environment.
+This translates into assumptions on the state action value functions $Q^\pi$ that for a given $\pi:\X\rightarrow \Delta_{\A}$ is defined as $Q^\pi(x,a) = \mathbb{E}^\pi[\sum^{\infty}_{h=0} \gamma^h r(X_h, A_h) | X_0, A_0 = x,a]$.
+In particular, we consider access to a class $\cQ$ such that it is expressive enough to either:
+(\textbf{Case I}) represent the state-action value functions of any generated policy by the algorithm we run, or 
+(\textbf{Case II}) the expert state-action value function $Q^{\expertp}$ is representable by the class $\cQ$.
+In practice, one should think of the class $\cQ$ of the functions that can be represented by a fixed neural network architectures by changing the weights.
+Our first, result is to show that (\textbf{Case II}) is more difficult than (\textbf{Case I}).
+\begin{tcolorbox}[
+    colback=orange!10!white,
+    colframe=orange!80!black,
+    %boxrule=0.8pt,
+    %arc=2pt,
+    %boxsep=2pt,
+    %bottom=0pt,
+    width=\linewidth
+  ]
+\begin{theorem} \textbf{Under Case II offline learning is not possible.}
+There exists a family of MDPs and expert pairs such that if $\cQ$ satisfies \textbf{Case I},
+then the algorithm SPOIL \citep{moulin2025inverseqlearningrightoffline} learns a $\varepsilon$-optimal policy observing $\cO(\varepsilon^{-2})$ offline expert data, without any dependence on $\abs{\PiE}$.    
+At the same time, if $\cQ$ only satisfies \textbf{Case II}, no algorithm can learn.
+\end{theorem}
+\end{tcolorbox}
+The above thereom gives a positive result under \textbf{Case I}, but how to learn under the weaker assumption (\textbf{Case II}) ?
+The answer resides into expert interactions. We design an algorithm, named OVI, such that 
+queries the expert along the learner trajectory to learn an $\varepsilon$-optimal policy in \textbf{Case II} without any dependence
+on the expert complexity but only on the class $\cQ$. 
+The idea to design the algorithm is to circumvent the likelihood maximization performed by BC but working directly with the objective in \eqref{eq:optgoal}. Following this philosophy, 
+we cast a game between a policy player and this time a $Q$-values player, not a reward player as done in the above section.
+\begin{tcolorbox}[
+    colback=orange!10!white,
+    colframe=orange!80!black,
+    %boxrule=0.8pt,
+    %arc=2pt,
+    %boxsep=2pt,
+    %bottom=0pt,
+    width=\linewidth
+  ]
+\begin{theorem} \textbf{Expert interaction enables efficient learning under Case II.}
+Given $\cQ$ satisfying \textbf{Case II}, OVI learns a $\varepsilon$-optimal policy after $\cO(\varepsilon^4)$ expert 
+queries or $\cO(\varepsilon^2)$ if $\cQ$ is convex.
+\end{theorem}
+\end{tcolorbox}
+\paragraph{Practical take-away}
+The above theoretical findings give us important practical take away for the distillation setting, where the expert policy 
+is parameterized by way more parameters than the learner one. In these settings, maximizing the 
+likelihood of the expert actions as BC or DAgger \citep{Ross:2011} do, is not a good idea because the small network
+is not capable of matching exactly the probability used by the expert policy. 
+In contrast our method, OVI, focus on obtaining the same performance, even if this is achieved via different actions.
+Our experiments in control environments, see \Cref{fig:size_scaling}, confirm that as the networks size gap between the expert and the learner increases our method OVI 
+becomes stronger and stronger compared to the maximum likelihood based approachs (BC and DAgger).
+
+\begin{figure*}[!t]
+    \centering
+    \includegraphics[width=\linewidth]{figures/size_scaling_figure_pendulum.pdf}
+    \caption{
+    \textbf{OVI enables smaller learner networks.} Average return ($y$-axis) as a function of the learner network hidden size ($x$-axis), over $50$ seeds and $10$ expert trajectories. We compare with offline and interactive policy-based methods (BC, DAgger) , and the offline value-based method SPOIL. Expert network is of size $64$, thus expert policy realizability holds only at the rightmost point of the $x$-axis. OVI outperforms all baselines across all network sizes. See \cref{sec:experiments} for more details. \label{fig:size_scaling}}
+    \vspace{-0.8em}
+\end{figure*}
 
 \newpage
 \bibliographystyle{plainnat}

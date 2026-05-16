@@ -7,45 +7,45 @@ Repeated entry---line 1376 of file references.bib
  : @article{viano2026multi
  :                        ,
 I'm skipping whatever remains of this entry
-You've used 24 entries,
+You've used 33 entries,
             2773 wiz_defined-function locations,
-            734 strings with 9453 characters,
-and the built_in function-call counts, 12188 in all, are:
-= -- 1002
-> -- 936
-< -- 11
-+ -- 315
-- -- 291
-* -- 1038
-:= -- 1944
-add.period$ -- 71
-call.type$ -- 24
-change.case$ -- 166
-chr.to.int$ -- 24
-cite$ -- 48
-duplicate$ -- 498
-empty$ -- 869
-format.name$ -- 325
-if$ -- 2484
-int.to.chr$ -- 1
+            777 strings with 11050 characters,
+and the built_in function-call counts, 16597 in all, are:
+= -- 1382
+> -- 1233
+< -- 14
++ -- 415
+- -- 381
+* -- 1398
+:= -- 2604
+add.period$ -- 98
+call.type$ -- 33
+change.case$ -- 223
+chr.to.int$ -- 32
+cite$ -- 66
+duplicate$ -- 696
+empty$ -- 1219
+format.name$ -- 426
+if$ -- 3422
+int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 26
-newline$ -- 127
-num.names$ -- 96
-pop$ -- 341
+missing$ -- 32
+newline$ -- 170
+num.names$ -- 132
+pop$ -- 474
 preamble$ -- 1
-purify$ -- 144
+purify$ -- 192
 quote$ -- 0
-skip$ -- 411
+skip$ -- 573
 stack$ -- 0
-substring$ -- 312
-swap$ -- 38
-text.length$ -- 2
+substring$ -- 419
+swap$ -- 70
+text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 249
+type$ -- 348
 warning$ -- 0
-while$ -- 88
+while$ -- 123
 width$ -- 0
-write$ -- 305
+write$ -- 414
 (There was 1 error message)
