@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.9.4)  16 MAY 2026 16:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.9.4)  16 MAY 2026 17:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1237,32 +1237,39 @@ decorations.softclip.code.tex
 illbetween.code.tex)))
 (/usr/local/texlive/2025/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplo
 ts.decorations.softclip.code.tex)))
-(/usr/local/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count376
-\l__pdf_internal_box=\box150
+(/usr/local/texlive/2025/texmf-dist/tex/latex/multibib/multibib.sty
+Package: multibib 2008/12/10 v1.4 Multiple bibliographies for one document.
+\mb@biblabelwidth=\count376
 )
-(./arxiv.aux)
+\@auxoutStr=\write4
+ (./Str.aux)
+\openout4 = `Str.aux'.
+
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count377
+\l__pdf_internal_box=\box150
+) (./arxiv.aux)
 \openout1 = `arxiv.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 93.
-LaTeX Font Info:    ... okay on input line 93.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 93.
-LaTeX Font Info:    ... okay on input line 93.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 93.
-LaTeX Font Info:    ... okay on input line 93.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 93.
-LaTeX Font Info:    ... okay on input line 93.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 93.
-LaTeX Font Info:    ... okay on input line 93.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 93.
-LaTeX Font Info:    ... okay on input line 93.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 93.
-LaTeX Font Info:    ... okay on input line 93.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 93.
-LaTeX Font Info:    ... okay on input line 93.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 93.
-LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 95.
+LaTeX Font Info:    ... okay on input line 95.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 95.
+LaTeX Font Info:    ... okay on input line 95.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 95.
+LaTeX Font Info:    ... okay on input line 95.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 95.
+LaTeX Font Info:    ... okay on input line 95.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 95.
+LaTeX Font Info:    ... okay on input line 95.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 95.
+LaTeX Font Info:    ... okay on input line 95.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 95.
+LaTeX Font Info:    ... okay on input line 95.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 95.
+LaTeX Font Info:    ... okay on input line 95.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 95.
+LaTeX Font Info:    ... okay on input line 95.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1298,22 +1305,22 @@ LaTeX Font Info:    ... okay on input line 93.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \microtypecontext on input line 93.
-Package microtype Info: Applying patch `item' on input line 93.
-Package microtype Info: Applying patch `toc' on input line 93.
-Package microtype Info: Applying patch `eqnum' on input line 93.
+LaTeX Info: Redefining \microtypecontext on input line 95.
+Package microtype Info: Applying patch `item' on input line 95.
+Package microtype Info: Applying patch `toc' on input line 95.
+Package microtype Info: Applying patch `eqnum' on input line 95.
 
-Package microtype Warning: Unable to apply patch `footnote' on input line 93.
+Package microtype Warning: Unable to apply patch `footnote' on input line 95.
 
-Package microtype Info: Applying patch `verbatim' on input line 93.
-LaTeX Info: Redefining \microtypesetup on input line 93.
+Package microtype Info: Applying patch `verbatim' on input line 95.
+LaTeX Info: Redefining \microtypesetup on input line 95.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 93.
+LaTeX Info: Redefining \showhyphens on input line 95.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -1323,16 +1330,16 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 )
 (/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count377
+\scratchcounter=\count378
 \scratchdimen=\dimen339
 \scratchbox=\box151
-\nofMPsegments=\count378
-\nofMParguments=\count379
+\nofMPsegments=\count379
+\nofMParguments=\count380
 \everyMPshowfont=\toks68
-\MPscratchCnt=\count380
+\MPscratchCnt=\count381
 \MPscratchDim=\dimen340
-\MPnumerator=\count381
-\makeMPintoPDFobject=\count382
+\MPnumerator=\count382
+\makeMPintoPDFobject=\count383
 \everyMPtoPDFconversion=\toks69
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -1350,16 +1357,16 @@ Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
 
 No file arxiv.toc.
-Package hyperref Info: Link coloring ON on input line 93.
+Package hyperref Info: Link coloring ON on input line 95.
 (./arxiv.out) (./arxiv.out)
-\@outlinefile=\write4
-\openout4 = `arxiv.out'.
+\@outlinefile=\write5
+\openout5 = `arxiv.out'.
 
 
 Package pgfplots notification 'compat/show suggested version=true': you might b
 enefit from \pgfplotsset{compat=1.18} (current compat level: 1.17).
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 96.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 98.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1367,7 +1374,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 96.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 98.
 
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -1377,23 +1384,139 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 
+Package natbib Warning: Citation `Sutton:1998' on page 1 undefined on input lin
+e 109.
+
+
+Package natbib Warning: Citation `bertsekas2001dynamic' on page 1 undefined on 
+input line 109.
+
+
+Package natbib Warning: Citation `silver2021reward' on page 1 undefined on inpu
+t line 110.
+
+
+Package natbib Warning: Citation `schaffner2021neural' on page 1 undefined on i
+nput line 116.
+
+
+Package natbib Warning: Citation `grujic2022rational' on page 1 undefined on in
+put line 116.
+
+
+Package natbib Warning: Citation `bandura1977social' on page 1 undefined on inp
+ut line 116.
+
+
+Package natbib Warning: Citation `bratman2010new' on page 1 undefined on input 
+line 116.
+
+
+Package natbib Warning: Citation `Russell:1998' on page 1 undefined on input li
+ne 123.
+
+
+Package natbib Warning: Citation `Ng:2000' on page 1 undefined on input line 12
+3.
+
+
+Package natbib Warning: Citation `Amodei:2016' on page 1 undefined on input lin
+e 123.
+
+
+
 [1
 
 {/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
 al/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
 
+Package natbib Warning: Citation `Osa:2018' on page 2 undefined on input line 1
+25.
+
+
+Package natbib Warning: Citation `ouyang2022training' on page 2 undefined on in
+put line 125.
+
+
+Package natbib Warning: Citation `christiano2017deep' on page 2 undefined on in
+put line 125.
+
+
+Package natbib Warning: Citation `Osa:2018' on page 2 undefined on input line 1
+27.
+
+
+Package natbib Warning: Citation `ouyang2022training' on page 2 undefined on in
+put line 127.
+
+
+Package natbib Warning: Citation `Cesa-Bianchi:2006' on page 2 undefined on inp
+ut line 137.
+
+
+
 [2{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 }]
 Package hyperref Info: bookmark level for unknown example defaults to 0 on inpu
-t line 163.
+t line 164.
+
+
+Package natbib Warning: Citation `Pomerleau:1991' on page 3 undefined on input 
+line 196.
+
+
+Package natbib Warning: Citation `bradley1952rank' on page 3 undefined on input
+ line 198.
+
 
 
 [3]
 
+Package natbib Warning: Citation `rajaraman2020toward' on page 4 undefined on i
+nput line 204.
+
+
+Package natbib Warning: Citation `foster2024behavior' on page 4 undefined on in
+put line 204.
+
+
+Package natbib Warning: Citation `rohatgi2025computational' on page 4 undefined
+ on input line 204.
+
+
+Package natbib Warning: Citation `foster2024behavior' on page 4 undefined on in
+put line 205.
+
+
+Package natbib Warning: Citation `rafailov2023direct' on page 4 undefined on in
+put line 221.
+
+
+Package natbib Warning: Citation `huang2024correcting' on page 4 undefined on i
+nput line 235.
+
+
+Package natbib Warning: Citation `liu2024provably' on page 4 undefined on input
+ line 235.
+
+
+
 [4]
 Package hyperref Info: bookmark level for unknown theorem defaults to 0 on inpu
-t line 263.
-Package pgfplots info on input line 344: fill between: activating layered graph
+t line 264.
+
+
+Package natbib Warning: Citation `viano2026multi' on page 5 undefined on input 
+line 283.
+
+
+
+[5]
+
+Package natbib Warning: Citation `moulin2025optimistically' on page 6 undefined
+ on input line 289.
+
+Package pgfplots info on input line 345: fill between: activating layered graph
 ics
 \pgf@layerbox@axis background=\box152
 \pgf@layerboxsaved@axis background=\box153
@@ -1411,46 +1534,107 @@ ics
 \pgf@layerboxsaved@axis descriptions=\box165
 \pgf@layerbox@axis foreground=\box166
 \pgf@layerboxsaved@axis foreground=\box167
-Package pgfplots info on input line 344: Setting layers 'axis background,axis g
+Package pgfplots info on input line 345: Setting layers 'axis background,axis g
 rid,axis ticks,axis lines,axis tick labels,pre main,main,axis descriptions,axis
  foreground'...
 
+Package natbib Warning: Citation `torabi2018behavioral' on page 6 undefined on 
+input line 353.
 
-[5]
-<figures/ch2/method_averages_comparison_with_ci.pdf, id=236, 1084.05pt x 433.62
+
+Package natbib Warning: Citation `moulin2025optimistically' on page 6 undefined
+ on input line 368.
+
+
+Package natbib Warning: Citation `moulin2025optimistically' on page 6 undefined
+ on input line 374.
+
+
+Package natbib Warning: Citation `jin2019provably' on page 6 undefined on input
+ line 376.
+
+
+Package natbib Warning: Citation `azar2017minimax' on page 6 undefined on input
+ line 377.
+
+
+Package natbib Warning: Citation `brafman2002r' on page 6 undefined on input li
+ne 377.
+
+
+Package natbib Warning: Citation `moulin2025optimistically' on page 6 undefined
+ on input line 388.
+
+
+
+[6]
+<figures/ch2/method_averages_comparison_with_ci.pdf, id=155, 1084.05pt x 433.62
 pt>
 File: figures/ch2/method_averages_comparison_with_ci.pdf Graphic file (type pdf
 )
 <use figures/ch2/method_averages_comparison_with_ci.pdf>
 Package pdftex.def Info: figures/ch2/method_averages_comparison_with_ci.pdf  us
-ed on input line 403.
+ed on input line 404.
 (pdftex.def)             Requested size: 263.06265pt x 105.2222pt.
-<figures/ch2/mujoco2.png, id=237, 717.68124pt x 519.9425pt>
+<figures/ch2/mujoco2.png, id=156, 717.68124pt x 519.9425pt>
 File: figures/ch2/mujoco2.png Graphic file (type png)
 <use figures/ch2/mujoco2.png>
-Package pdftex.def Info: figures/ch2/mujoco2.png  used on input line 417.
+Package pdftex.def Info: figures/ch2/mujoco2.png  used on input line 418.
 (pdftex.def)             Requested size: 131.53082pt x 95.29135pt.
 
 
-[6]
+Package natbib Warning: Citation `watson2023coherent' on page 7 undefined on in
+put line 421.
+
+
+Package natbib Warning: Citation `ni2021f' on page 7 undefined on input line 42
+1.
+
+
+Package natbib Warning: Citation `zeng2022structural' on page 7 undefined on in
+put line 421.
+
+
+Package natbib Warning: Citation `watson2023coherent' on page 7 undefined on in
+put line 421.
+
+
+Package natbib Warning: Citation `ni2021f' on page 7 undefined on input line 42
+1.
+
+
+Package natbib Warning: Citation `zeng2022structural' on page 7 undefined on in
+put line 421.
+
+
 pdfTeX warning (ext4): destination with the same identifier (name{example.1}) h
 as been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.430 \begin{example}\textbf
+l.431 \begin{example}\textbf
                             {Distillation}
 pdfTeX warning (ext4): destination with the same identifier (name{example.2}) h
 as been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.436 \begin{example}\textbf
+l.437 \begin{example}\textbf
                             {Learning from a privileged expert.}
+
+Package natbib Warning: Citation `moulin2025inverseqlearningrightoffline' on pa
+ge 7 undefined on input line 443.
+
+
 pdfTeX warning (ext4): destination with the same identifier (name{theorem.3}) h
 as been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.459 \begin{theorem} \textbf
+l.460 \begin{theorem} \textbf
                              {Under Case II offline learning is not possible.}
+
+Package natbib Warning: Citation `moulin2025inverseqlearningrightoffline' on pa
+ge 7 undefined on input line 462.
+
+
 
 [7 <./figures/ch2/method_averages_comparison_with_ci.pdf> <./figures/ch2/mujoco
 2.png>]
@@ -1458,46 +1642,144 @@ pdfTeX warning (ext4): destination with the same identifier (name{theorem.4}) h
 as been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.480 \begin{theorem} \textbf
+l.481 \begin{theorem} \textbf
                              {Expert interaction enables efficient learning ...
-<figures/size_scaling_figure_pendulum.pdf, id=335, 567.91475pt x 212.74481pt>
+
+Package natbib Warning: Citation `Ross:2011' on page 8 undefined on input line 
+489.
+
+<figures/size_scaling_figure_pendulum.pdf, id=219, 567.91475pt x 212.74481pt>
 File: figures/size_scaling_figure_pendulum.pdf Graphic file (type pdf)
 <use figures/size_scaling_figure_pendulum.pdf>
 Package pdftex.def Info: figures/size_scaling_figure_pendulum.pdf  used on inpu
-t line 496.
+t line 497.
 (pdftex.def)             Requested size: 469.75502pt x 175.97433pt.
-<figures/ch5/win_rate_initial.pdf, id=338, 1141.64702pt x 295.94252pt>
+
+Package natbib Warning: Citation `rafailov2023direct' on page 8 undefined on in
+put line 505.
+
+<figures/ch5/win_rate_initial.pdf, id=220, 1141.64702pt x 295.94252pt>
 File: figures/ch5/win_rate_initial.pdf Graphic file (type pdf)
 <use figures/ch5/win_rate_initial.pdf>
 Package pdftex.def Info: figures/ch5/win_rate_initial.pdf  used on input line 5
-07.
+08.
 (pdftex.def)             Requested size: 469.75502pt x 121.77072pt.
+
+Package natbib Warning: Citation `gao2023scaling' on page 8 undefined on input 
+line 514.
+
+
+Package natbib Warning: Citation `park2024disentangling' on page 8 undefined on
+ input line 514.
+
+
+Package natbib Warning: Citation `xu2024is' on page 8 undefined on input line 5
+14.
+
 
 
 [8 <./figures/size_scaling_figure_pendulum.pdf>]
+
+Package natbib Warning: Citation `huang2024correcting' on page 9 undefined on i
+nput line 520.
+
+
+Package natbib Warning: Citation `liu2024provably' on page 9 undefined on input
+ line 520.
+
+
+Package natbib Warning: Citation `huang2024correcting' on page 9 undefined on i
+nput line 520.
+
+
+Package natbib Warning: Citation `cui2023ultrafeedback' on page 9 undefined on 
+input line 525.
+
+
+Package natbib Warning: Citation `hu2022lora' on page 9 undefined on input line
+ 529.
+
+
 pdfTeX warning (ext4): destination with the same identifier (name{theorem.1}) h
 as been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.539 \begin{theorem} \textbf
+l.540 \begin{theorem} \textbf
                              {PEPO avoids over-optimization without knowing ...
 
 
 [9 <./figures/ch5/win_rate_initial.pdf>]
 
-[10] (./arxiv.bbl
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `cmtt' (encoding: T1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
+Package natbib Warning: Citation `cortes2018online' on page 10 undefined on inp
+ut line 572.
 
 
-[11])
+Package natbib Warning: Citation `neu2020fast' on page 10 undefined on input li
+ne 572.
 
-[12]
+
+Package natbib Warning: Citation `pasteris2024bandits' on page 10 undefined on 
+input line 572.
+
+
+Package natbib Warning: Citation `fan2026halluhard' on page 10 undefined on inp
+ut line 572.
+
+
+Package natbib Warning: Citation `chen2025coverage' on page 10 undefined on inp
+ut line 575.
+
+
+Package natbib Warning: Citation `wagenmaker2025posterior' on page 10 undefined
+ on input line 575.
+
+
+Package natbib Warning: Citation `gui2024bonbon' on page 10 undefined on input 
+line 575.
+
+
+Package natbib Warning: Citation `huang2025best' on page 10 undefined on input 
+line 575.
+
+
+Package natbib Warning: Citation `foster2024behavior' on page 10 undefined on i
+nput line 578.
+
+
+Package natbib Warning: Citation `rohatgi2025computational' on page 10 undefine
+d on input line 578.
+
+
+Package natbib Warning: Citation `joshi2025learning' on page 10 undefined on in
+put line 578.
+
+
+Package natbib Warning: Citation `dadashi2021continuous' on page 10 undefined o
+n input line 578.
+
+
+Package natbib Warning: Citation `viano2022proximal' on page 10 undefined on in
+put line 578.
+
+
+Package natbib Warning: Citation `viano2024imitation' on page 10 undefined on i
+nput line 578.
+
+
+Package natbib Warning: Citation `moulin2025optimistically' on page 10 undefine
+d on input line 578.
+
+
+
+[10]
+No file Str.bbl.
+(./arxiv.bbl)
 
 Package caption Warning: Unused \captionsetup[sub] on input line 49.
 See the caption package documentation for explanation.
+
+
+Package natbib Warning: There were undefined citations.
 
 (./arxiv.aux)
  ***********
@@ -1505,14 +1787,14 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `arxiv.out' has not changed.
-(rerunfilecheck)             Checksum: AF688849056F0889A1B5E68B60510859;2042.
+(rerunfilecheck)             Checksum: 1466847F606C098B260EFE7517B8E064;2141.
  ) 
 Here is how much of TeX's memory you used:
- 46407 strings out of 473190
- 1063498 string characters out of 5715801
- 1590376 words of memory out of 5000000
- 68536 multiletter control sequences out of 15000+600000
- 590255 words of font info for 222 fonts, out of 8000000 for 9000
+ 46352 strings out of 473190
+ 1061382 string characters out of 5715801
+ 1588376 words of memory out of 5000000
+ 68485 multiletter control sequences out of 15000+600000
+ 590760 words of font info for 234 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,17n,101p,1739b,2194s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
@@ -1544,12 +1826,11 @@ type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2025/texmf-dist/fonts/ty
 pe1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type
 1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/
 public/cm-super/sfti0900.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/pu
-blic/cm-super/sfti1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/publ
-ic/cm-super/sftt1000.pfb>
-Output written on arxiv.pdf (12 pages, 1034952 bytes).
+blic/cm-super/sfti1000.pfb>
+Output written on arxiv.pdf (10 pages, 997937 bytes).
 PDF statistics:
- 640 PDF objects out of 1000 (max. 8388607)
- 439 compressed objects within 5 object streams
- 94 named destinations out of 1000 (max. 500000)
- 51913 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 474 PDF objects out of 1000 (max. 8388607)
+ 285 compressed objects within 3 object streams
+ 58 named destinations out of 1000 (max. 500000)
+ 51409 words of extra memory for PDF output out of 51595 (max. 10000000)
 

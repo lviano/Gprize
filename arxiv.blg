@@ -1,51 +1,46 @@
 This is BibTeX, Version 0.99d (TeX Live 2025)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: arxiv.aux
-The style file: plainnat.bst
-Database file #1: references.bib
-Repeated entry---line 1376 of file references.bib
- : @article{viano2026multi
- :                        ,
-I'm skipping whatever remains of this entry
-You've used 38 entries,
-            2773 wiz_defined-function locations,
-            800 strings with 12221 characters,
-and the built_in function-call counts, 20151 in all, are:
-= -- 1679
-> -- 1545
-< -- 16
-+ -- 519
-- -- 480
-* -- 1709
-:= -- 3144
-add.period$ -- 115
-call.type$ -- 38
-change.case$ -- 271
-chr.to.int$ -- 37
-cite$ -- 76
-duplicate$ -- 828
-empty$ -- 1441
-format.name$ -- 530
-if$ -- 4170
-int.to.chr$ -- 2
-int.to.str$ -- 1
-missing$ -- 36
-newline$ -- 195
-num.names$ -- 152
-pop$ -- 582
-preamble$ -- 1
-purify$ -- 235
+I found no \bibstyle command---while reading file arxiv.aux
+You've used 49 entries,
+            0 wiz_defined-function locations,
+            141 strings with 1380 characters,
+and the built_in function-call counts, 0 in all, are:
+= -- 0
+> -- 0
+< -- 0
++ -- 0
+- -- 0
+* -- 0
+:= -- 0
+add.period$ -- 0
+call.type$ -- 0
+change.case$ -- 0
+chr.to.int$ -- 0
+cite$ -- 0
+duplicate$ -- 0
+empty$ -- 0
+format.name$ -- 0
+if$ -- 0
+int.to.chr$ -- 0
+int.to.str$ -- 0
+missing$ -- 0
+newline$ -- 0
+num.names$ -- 0
+pop$ -- 0
+preamble$ -- 0
+purify$ -- 0
 quote$ -- 0
-skip$ -- 699
+skip$ -- 0
 stack$ -- 0
-substring$ -- 517
-swap$ -- 102
-text.length$ -- 6
+substring$ -- 0
+swap$ -- 0
+text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 403
+type$ -- 0
 warning$ -- 0
-while$ -- 144
+while$ -- 0
 width$ -- 0
-write$ -- 478
+write$ -- 0
 (There was 1 error message)

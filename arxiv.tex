@@ -80,6 +80,8 @@
 \def\sD{{\mathbb{D}}}
 
 \input{macros}
+\usepackage{multibib}
+\newcites{Str}{My Publications \small{\textcolor{purple}{$(\alpha\beta)$alphabetic order}, \textcolor{red}{$^\star$}first  author contribution, }}
 \title{\textbf{Is reward really enough?}}
 
 % Author definitions
@@ -94,15 +96,14 @@
 
 \maketitle
 \begin{abstract}
-In my thesis, I challenge the common wisdom that \emph{reward is enough} in Reinforcement Learning. 
-Indeed, in several practical applications a reward function that induces the desired behaviour is difficult to design.
-Methods that learn without rewards but from other sources such as preferences or demonstrations and they are based on unrealistic assumptions.
-In this thesis, I remove several of them: I develop the first imitation learning algorithms that can learn only from expert features demonstrations, 
-a much milder requirement than observing actions demonstrations and that do not assume that the learner is capable of learning exactly the policy 
-that the expert adopts. Studying this setting is important when the learner has less memory, computational power or information compared to the expert.
-The last contribution is beyond imitation learning to develop more robust algorithms 
-that are guaranteed not to overfit. In contrast, this is a well-known issue of widely use algorithms such as Direct Preference Optimization (DPO).
-The theoretical results transfer to improved performance in simulated robotics and post-training of Large Language Models (LLMs) up to 34B parameters. 
+We challenge the common wisdom that \emph{reward is enough} to \emph{learn} intelligent behavior. In many practical settings---robotics, LLM fine-tuning, multi-agent systems---designing a correct reward function is infeasible, and practitioners instead rely on expert demonstrations or human preferences. Yet existing imitation learning (IL) and alignment algorithms rest on unrealistic assumptions. This thesis removes four of them, yielding the following contributions.
+\begin{enumerate}
+    \item \textbf{Multi-agent IL.} Standard IL algorithms are restricted to single-agent systems and fail arbitrarily in games. We characterize the statistical complexity of learning Nash equilibria from demonstrations and introduce RMAX-RAVI-UCB-ZERO-BC, the first rate-optimal IL algorithm for Markov games.
+    \item \textbf{IL from features.} Existing IL requires observing expert \emph{actions}, but recordings (e.g., video) reveal only features. We prove that environment interaction is necessary in this setting and design FRA-IL, the first min-max optimal algorithm for IL from features in Linear MDPs.
+    \item \textbf{IL without expert realizability.} Standard IL guarantees require the learner's policy class to contain the expert policy, which fails in distillation or when learning from a privileged expert. We introduce SPOIL and OVI, the first offline and interactive IL algorithms whose sample complexity depends only on the complexity of the \emph{Q-value} class, not the expert's policy.
+    \item \textbf{Robust alignment.} DPO and its variants avoid overfitting only when the data-generating policy is known, which rarely holds in practice. We propose PEPO, the first alignment algorithm that provably avoids over-optimization without any knowledge of the data-generating policy.
+\end{enumerate}
+The theoretical results are validated experimentally in simulated robotics and in post-training of LLMs up to 34B parameters.
 \end{abstract}
 \section{Introduction}
 Reinforcement Learning (RL) \citep{Sutton:1998,bertsekas2001dynamic} is the subfield of machine learning which studies intelligent decision making. In particular, RL studies efficient algorithms to learn efficiently a strategy to maximize the total reward obtained in stochastic sequential decision-making problems. 
@@ -134,7 +135,7 @@ newly introduced setting of IL from features.
 \item \textbf{Limitation 3:} Existing IL algorithms apply supervised learning but this only works when the algorithm uses a network
  to parametrize the policy which is \emph{capable of representing the expert policy}. This does not happen when imitation is applied to reduce the number of parameters as it happens in distillation. 
  In this thesis, we bypass this requirement solving the problem via online learning \citep{Cesa-Bianchi:2006}. Thanks to our techniques we only require to represent the $Q$ value of the expert rather than its policy.
- \item \textbf{Limitation 4:} Finally, looking at alignment algorithms we noitice that common choices such as DPO overfit, and alternatives such as $\chi^2$PO and DPO-SFT fix the problems only when the
+ \item \textbf{Limitation 4:} Finally, looking at alignment algorithms we notice that common choices such as DPO overfit, and alternatives such as $\chi^2$PO and DPO-SFT fix the problems only when the
  policy generating the available data is known. However this is rarely the case in practice. In this thesis, we present the first algorithm that
  provably avoids overfitting without relying on any knowledge of the data generating process.
 \end{itemize}
@@ -159,14 +160,14 @@ That is,
 \begin{equation}
 \mathbb{E}\bs{\sum_{x,a\in \X\times\A} (\mu^{\expertp}(x,a) - \mu^{\piout}(x,a))r(x,a)} \leq \varepsilon, \label{eq:optgoal}
 \end{equation}
-where the expectation is over the randomness used by the algorithm to generate $\piout$.To make the setting feel concrete we provide here two examples.
+where the expectation is over the randomness used by the algorithm to generate $\piout$. To make the setting feel concrete we provide here two examples.
 \begin{example}\textbf{Robotics.} In robotic manipulation, we can consider that the state space is the robot position, the recorded actions are the torques applied from that state to solve the task and 
 the reward is a terminal only function that equal one if the task is solved correctly and zero otherwise.
 The goal of the learning algorithm is to learn a policy, i.e. how to apply torques to the robot joints so that the success rate is at most $\varepsilon$ worst than the 
 expert one.
 \end{example}
 \begin{example}\textbf{Finance.}
-In finance, we can think of the state as the current budgent of an AI authomated investor and as action space the possible 
+In finance, we can think of the state as the current budget of an AI automated investor and as action space the possible 
 ways on placing part of the budget on the market. The expert is a more expert investor, e.g. a human, 
 that shows how to place money on the various stocks. The reward is clearly the monetary gain, hence the goal of the AI investor's algorithm is to make as much money as the human expert (up to the usual $\varepsilon$ tolerance).
 \end{example}
@@ -187,15 +188,15 @@ The goal of the learning algorithm is to update the starting model $\piref$ to o
 \end{equation}
 where $\Pi$ is the subset of the class all mappings from prompts to distributions over responses denoted as $\Pi_{\mathrm{all}} = \bc{\pi: \X\rightarrow\Delta_{\A}}$. Notice that the goal in alignement is a two objective one: maximizing the reward while staying close to the initial $\piref$. We highlight why this is useful in the context of LLM post-training with our next example.
 \begin{example}
-\textbf{LLM post-training.} In the context of LLM, $\piref$ is a model skilled in tasks that can be well-learned by next-token prediction. For example, producing grammaticaly correct sentences.
-In contast $r^\star$ rewards highly behaviours that requires reasoning, i.e. producing a correct math proof. The objective we consider above aims at finding a tradeoff between these skills.
+\textbf{LLM post-training.} In the context of LLM, $\piref$ is a model skilled in tasks that can be well-learned by next-token prediction. For example, producing grammatically correct sentences.
+In contrast $r^\star$ rewards highly behaviours that requires reasoning, i.e. producing a correct math proof. The objective we consider above aims at finding a tradeoff between these skills.
 \end{example}
 \subsection{Folklore imitation learning.}
-The standard and most common approach to imitation learning and alignment is to implement bthe maximum likelihood principle. 
-In imitation learning, the folklore approach started in \citep{Pomerleau:1991} is to maximize the likelihhod of the observed expert actions, while in alignement 
+The standard and most common approach to imitation learning and alignment is to implement the maximum likelihood principle. 
+In imitation learning, the folklore approach started in \citep{Pomerleau:1991} is to maximize the likelihood of the observed expert actions, while in alignment
 is to find the policy optimal for the reward function that maximizes the likelihood of the observed preferences 
 under the Bradley-Terry model \citep{bradley1952rank}.
- In particular, denoting the state-action dataset sampled from the expert occupancy measure as $\bc{\XEi,\AEi} \sim \mu^{\expert}$ be the expert dataset to be imitated we can can consider $\XEi$ as the covariates and $\AEi$ as the labels to be predicted. This point of view motivates the following algorithm,
+ In particular, denoting the state-action dataset sampled from the expert occupancy measure as $\bc{\XEi,\AEi} \sim \mu^{\expert}$ be the expert dataset to be imitated we can consider $\XEi$ as the covariates and $\AEi$ as the labels to be predicted. This point of view motivates the following algorithm,
 \[
 \argmax_{\pi \in \PiE} \sum^{\tauE}_{i=1} \log \pi(\AEi|\XEi),
 \]
@@ -205,7 +206,7 @@ However, the optimization objective can clearly not be computed if the actions a
 learning algorithm has access to a function class $\PiE$ such that $\expertp \in \Pi_E$. In practice, this means that the learning algorithm should be using 
 a network such that can represent the expert policy if the weights are chosen appropriately, thus suffering from \textbf{Limitation 3}. This is a serious source of concern when the learner network is much smaller than the expert one. 
 We address both these limitations in the upcoming sections, casting imitation learning as a game between players updating their strategies via online learning algorithms.
-Finally, nothing is known about the behaviour of BC in multi-agent systems. We show that BC is suboptimal in that settings and we introduce an alternative algorithm that does not suffer \textbf{Limitation 1}.
+Finally, nothing is known about the behavior of BC in multi-agent systems. We show that BC is suboptimal in that settings and we introduce an alternative algorithm that does not suffer \textbf{Limitation 1}.
 
 \subsection{Folklore alignment.}
 In RLHF, the idea is to optimize \eqref{eq:PEPOgoal} under two approximations. First, we approximate $r^\star$ which is unknown to the learner with the maximum likelihood estimator, denoted by $\hat{r}$ and learned on the dataset $\mathcal{D}$ as follows:
@@ -236,11 +237,11 @@ Our contribution is to avoid overfitting while \emph{assuming no knowledge at al
 
 \section{Improved Imitation Learning}
 In this section, we unveil our results which allows to circumvent Limitations 1,2 and 3.
-To start, with we present the first optimal algorithm in multi-agent systems.
+To start with, we present the first optimal algorithm in multi-agent systems.
 \subsection{Beyond Limitation 1: Multi-agent imitation learning}
 In general, a $n$-players Markov game is defined as the tuple $\gG = (\cX, \cA, H, r, P, \initial)$. Compared to single agent MDPs, the action space factorizes now as
 $\gA = \gA^1 \times \gA^2 \dots \times \gA^n$, which is the product space of the individual action spaces 
-$\gA^1,\gA^2, \dots, \gA^n$,and the transition kernel depends now on all players action  $P:\X\times\A\rightarrow \Delta_{\X}$. In other words, $P(x' \mid x,a^1,a^2, \dots, a^n)$ denotes the probability of landing in $x'$ from $x$ under the action profile $a^1,a^2,\dots, a^n$. The reward function for the $i^{\mathrm{th}}$ player also depends on the whole action profile
+$\gA^1,\gA^2, \dots, \gA^n$,and the transition kernel depends now on all players' actions  $P:\X\times\A\rightarrow \Delta_{\X}$. In other words, $P(x' \mid x,a^1,a^2, \dots, a^n)$ denotes the probability of landing in $x'$ from $x$ under the action profile $a^1,a^2,\dots, a^n$. The reward function for the $i^{\mathrm{th}}$ player also depends on the whole action profile
  $r^i: \X\times\A^1\times\A^2 \dots \times \A^n \rightarrow \mathbb{R}$ with $r^i(\cdot) \in [-1,1].$ 
 Moreover, we denote the  space of policies for each player, i.e.  for $i \in [n]$, as $\Pi^i: \X \rightarrow \Delta_{\A^n}$.
 Then, for any policy profile $(\pi^1,\pi^2, \dots, \pi^n)$ let us call a \emph{trajectory} the stochastic process $(X_1, (A^1_1, \dots A^n_1),  (A^1_2, \dots A^n_2) \dots)$ where $X_1 \sim \initial$, $A^i_h \sim \pi^i(\cdot|X_h)$ for all $i \in [n]$ and $X_{h+1} \sim P(\cdot|X_h, A^1_h, \dots, A^n_h)$ for each $h \in [0, \infty )$.
@@ -261,15 +262,15 @@ As said, before my thesis BC was not studied in the context of imitation learnin
     width=\linewidth
   ]
 \begin{theorem} \textbf{Behavioral cloning fails in games}
-There exists an Markov Game and a Nash equilibrium profile, such that the output $\piout$ of BC or any other offline IL algorithm is 
-arbitrary far from being a Nash Equilibrium. That is,
+There exists a Markov Game and a Nash equilibrium profile, such that the output $\piout$ of BC or any other offline IL algorithm is
+arbitrarily far from being a Nash Equilibrium. That is,
 $$\max_{i\in[n]}\max_{\pi^i \in \Pi^i}\sum_{x,a^1, \dots,a^n} \br{\mu^{\pi^i, \pi^{-i}_{\mathrm{NE}}}(x,a^1, \dots,a^n) - \mu^{\pi_{\mathrm{NE}}}(x,a^1, \dots,a^n)}r(x,a^1, \dots,a^n) \geq \Omega\br{\frac{1}{1-\gamma}}.$$
 \end{theorem}
 \end{tcolorbox}
-Next, we present a new algorithm named RMAX-RAVI-ZERO-BC that it is guaranteed to learn a $\varepsilon$-Nash equilibrium in any game. Key for the success is to allow a more powerful access model to the expert.
+Next, we present a new algorithm named RMAX-RAVI-UCB-ZERO-BC that is guaranteed to learn a $\varepsilon$-Nash equilibrium in any game. Key for the success is to allow a more powerful access model to the expert.
 That is, the learner can sample a joint action expert policy profile \emph{from any visited state} and not only from the states in the expert dataset.
-Intuitevily this means that we do not only observe strong players playing among them but we can play according to a policy of our choice against the other player's strong policy. 
-This allows to observe how the opponents policies behave in states that would never be encountered if all players where following a Nash profile.
+Intuitively this means that we do not only observe strong players playing among them but we can play according to a policy of our choice against the other player's strong policy. 
+This allows to observe how the opponents policies behave in states that would never be encountered if all players were following a Nash profile.
 \begin{tcolorbox}[
     colback=orange!10!white,
     colframe=orange!80!black,
@@ -279,15 +280,15 @@ This allows to observe how the opponents policies behave in states that would ne
     %bottom=0pt,
     width=\linewidth
   ]
-\begin{theorem} \textbf{RMAX-RAVI-UCB-ZERO-BC \citep{viano2026multi} learns in any game.}
-    LSVI-UCB-ZERO-BC outputs a policy $\piout$ which is a $\varepsilon$-Nash Equilibrium with probability at least $1-\delta$ after 
+\begin{theorem} \textbf{RMAX-RAVI-UCB-ZERO-BC \citeStr{viano2026multi} learns in any game.}
+    RMAX-RAVI-UCB-ZERO-BC outputs a policy $\piout$ which is a $\varepsilon$-Nash Equilibrium with probability at least $1-\delta$ after 
     $\mathcal{O}\br{\log(1/\delta) \varepsilon^{-2}}$ expert samples.
 \end{theorem}
 \end{tcolorbox}
-The idea behind the design of LSVI-UCB-ZERO-BC is to first design a data collection phase 
-which plays against the Nash profile to collect an exploratory dataset. This is implemented running our COLT algorithm RMAX-RAVI-UCB \citep{moulin2025optimistically} to maximize an exploratory reward.
+The idea behind the design of RMAX-RAVI-UCB-ZERO-BC is to first design a data collection phase 
+which plays against the Nash profile to collect an exploratory dataset. This is implemented running our COLT algorithm RMAX-RAVI-UCB \citepStr{moulin2025optimistically} to maximize an exploratory reward.
 Secondly, this dataset is used for BC to output the learned policy.
-Our algorithms are not only enjoying better theoretical properties but also lead to improve performance in distillation for games. 
+Our algorithms are not only enjoying better theoretical properties but also lead to improved performance in distillation for games. 
 In particular, we consider distilling a state-of-the-art Connect4 solver into a small network. While BC fails completely, our algorithm achieves better win rates against any opponent strength on the horizontal axis of \Cref{fig:winrate_multi}.
 \begin{figure}
     \centering
@@ -348,12 +349,12 @@ In particular, we consider distilling a state-of-the-art Connect4 solver into a 
 
 \subsection{Beyond Limitation 2: Imitation Learning from features.}
 A second contribution of my thesis has been solving the imitation learning problem when the expert actions are not observed.
-This enables the use of massively larger dataset containing onloy the states of the expert or more generally only expert features.
+This enables the use of massively larger dataset containing only the states of the expert or more generally only expert features.
 Meaningful features in application could be a frame of a video showing the robot doing a certain task \citep{torabi2018behavioral}.
 Formally, we consider a features map $\phi_r: \X\times\A \rightarrow \mathbb{R}^d$ such that $r$ is linear in $\phi_r$ and assume that the expert only reveals a features dataset $\cD_{\phi} = \bc{\phi_r(X^i_E, A^i_E)}^{\tau_E}_{i=1}$,
-a dataset which is considerably less informative than $\bc{X^i_E, A^i_E}^{\tau_E}_{i=1}$ when the feature map is infomation-lossy as it happens for example when $\phi_r$ represents a video frame.
+a dataset which is considerably less informative than $\bc{X^i_E, A^i_E}^{\tau_E}_{i=1}$ when the feature map is information-lossy as it happens for example when $\phi_r$ represents a video frame.
 Our first fundamental contribution is that, because of the information loss, it is no longer possible to learn 
-without access to the enviroment to estimate the transition dynamics.
+without access to the environment to estimate the transition dynamics.
 We make this negative result precise in the following.
 \begin{tcolorbox}[
     colback=orange!10!white,
@@ -370,9 +371,9 @@ We make this negative result precise in the following.
 \end{theorem}
 \end{tcolorbox}
 Moreover, we match this lower bound in both the number of sample state-action trajectories and in terms of expert features observation, i.e. $\tauE$ with a new algorithm
-dubbed FRA-IL \citep{moulin2025optimistically} when the transition dynamics are also linear in same other features map.
+dubbed FRA-IL \citep{moulin2025optimistically} when the transition dynamics are also linear in some other feature map.
 The core idea is to reduce imitation learning to a game between a player that plays a sequence of reward functions and a second one playing a sequence of policies.
-Finding the right updates for the policy player, solved a problem open in RL theory since 5 years \citep{jin2019provably} which consisted of designing no-regret algorithm for infinite horizon MDPs with linear transitions and rewards.
+Finding the right updates for the policy player, solved a problem open in RL theory since 5 years \citep{jin2019provably} which consisted of designing no-regret algorithms for infinite horizon MDPs with linear transitions and rewards.
 Key to solve the problem was a new exploration technique combining two classics (UCB \cite{azar2017minimax} and RMAX \citep{brafman2002r}) in a novel way.
 The guarantees for FRA-IL read as follows.
 \begin{tcolorbox}[
@@ -389,10 +390,10 @@ The guarantees for FRA-IL read as follows.
 \end{theorem}
 \end{tcolorbox}
 It is important to highlight however that expert interaction as required in the multi agent setting is not needed and the environment rewards are not observed. Only next states are.
-Moreover, the bounds can not be improved in terms of $\varepsilon$ because opf our lower bound. Therefore, FRA-IL is rate optimal.
+Moreover, the bounds can not be improved in terms of $\varepsilon$ because of our lower bound. Therefore, FRA-IL is rate optimal.
 
 \paragraph{Practical take-away}
-From the above theoretical analysis, we learn that exploration in the policy update is crucial. In stark contrast existing algorithm were neglecting this aspect.
+From the above theoretical analysis, we learn that exploration in the policy update is crucial. In stark contrast, existing algorithms were neglecting this aspect.
 We therefore designed, inspired by theory above, a meta algorithm that injects exploration in existing algorithms to learn only from features in simulated robotics.
 Remarkably, as shown in \Cref{fig:SOAR}, we noticed a consistent improvement for any base algorithm on which we applied our exploration routine.
 \begin{figure}[t]
@@ -434,12 +435,12 @@ the reasoning traces of the larger one. Still, it could generate correct respons
 just maximizing the likelihood of the expert responses. 
 \end{example}
 \begin{example}\textbf{Learning from a privileged expert.}
-In same situation the expert might chooses actions at a given state using external information which is not revealed to the learner, we call this a privileged expert.
+In some situations the expert might choose actions at a given state using external information which is not revealed to the learner, we call this a privileged expert.
 For example, in finance, a human investor acts not only looking at the current status of the market but also according to some internal bias
-or information aquired elsewhere. Without access to such privileges, the learner can not hope to match 
-the expert distribution. However, there is still hope to perform similarly in terms of gained money, even thought by taking different actions.
+or information acquired elsewhere. Without access to such privileges, the learner can not hope to match 
+the expert distribution. However, there is still hope to perform similarly in terms of gained money, even though by taking different actions.
 \end{example}
-In our NeurIPS 2025 paper, \citep{moulin2025inverseqlearningrightoffline} we invent the first offline imitation learning which does not mimick the expert.
+In our NeurIPS 2025 paper, \citep{moulin2025inverseqlearningrightoffline} we invent the first offline imitation learning which does not mimic the expert.
 Formally, the key idea is to avoid assuming access to a class $\PiE$ such that $\expertp \in \PiE$ at the cost of introducing structural assumptions on the environment.
 This translates into assumptions on the state action value functions $Q^\pi$ that for a given $\pi:\X\rightarrow \Delta_{\A}$ is defined as $Q^\pi(x,a) = \mathbb{E}^\pi[\sum^{\infty}_{h=0} \gamma^h r(X_h, A_h) | X_0, A_0 = x,a]$.
 In particular, we consider access to a class $\cQ$ such that it is expressive enough to either:
@@ -462,7 +463,7 @@ then the algorithm SPOIL \citep{moulin2025inverseqlearningrightoffline} learns a
 At the same time, if $\cQ$ only satisfies \textbf{Case II}, no algorithm can learn.
 \end{theorem}
 \end{tcolorbox}
-The above thereom gives a positive result under \textbf{Case I}, but how to learn under the weaker assumption (\textbf{Case II}) ?
+The above theorem gives a positive result under \textbf{Case I}, but how to learn under the weaker assumption (\textbf{Case II}) ?
 The answer resides into expert interactions. We design an algorithm, named OVI, such that 
 queries the expert along the learner trajectory to learn an $\varepsilon$-optimal policy in \textbf{Case II} without any dependence
 on the expert complexity but only on the class $\cQ$. 
@@ -489,7 +490,7 @@ likelihood of the expert actions as BC or DAgger \citep{Ross:2011} do, is not a 
 is not capable of matching exactly the probability used by the expert policy. 
 In contrast our method, OVI, focus on obtaining the same performance, even if this is achieved via different actions.
 Our experiments in control environments, see \Cref{fig:size_scaling}, confirm that as the networks size gap between the expert and the learner increases our method OVI 
-becomes stronger and stronger compared to the maximum likelihood based approachs (BC and DAgger).
+becomes stronger and stronger compared to the maximum likelihood-based approaches (BC and DAgger).
 
 \begin{figure*}[!t]
     \centering
@@ -540,7 +541,7 @@ All in all, we obtain the following formal guarantees.
 PEPO learns, with probability $1-\delta$, a $\varepsilon$-optimal policy for \eqref{eq:PEPOgoal}, when given a dataset of size $\cO\br{\nicefrac{C^\star \log(1/\delta)}{\varepsilon^2}}$ preferences.
 \end{theorem}
 \end{tcolorbox}
-Notably, in the above theorem there is no dependence at all on $C^{\mathrm{all}}$ and the dependence on $C^\star$ is better then what obtained in prior works. 
+Notably, in the above theorem there is no dependence at all on $C^{\mathrm{all}}$ and the dependence on $C^\star$ is better than what obtained in prior works. 
 Finally, the result is attained without knowing $\pidata$.
 Practically, we tested our method in which $\pidata$ is unknown because the responses 
 in the dataset are generated by
@@ -551,8 +552,8 @@ The performance in this context is measured with the LLM-as-a-judge protocol.
 A large LLM (Llama-70B) has to decide the winner among one response generated by the starting model $\piref$
 and one from the model fine tuned via DPO or PEPO. Then, the performance is the percentage of wins that the fine-tuned model attains.
 
-It can also be notice that the ensemble size $L$ has a strong effect on the performance. Our theory provides 
-guidance for the optimal choice. In particular, if $L$ is too small than we can not guarantee
+It can also be noticed that the ensemble size $L$ has a strong effect on the performance. Our theory provides 
+guidance for the optimal choice. In particular, if $L$ is too small, then we cannot guarantee
 that we estimate pessimistically the true reward gap.
 On the contrary, when $L$ is too large, then each LoRA model is trained with a too small amount of data. All in all, the best choice of $L$ is the 
 smallest one among the values small enough to guarantee pessimism. This change depending on the initial model $\piref$. 
@@ -563,8 +564,28 @@ experiment on a 34B model, Yi-34B.
 
 \section{Conclusions}
 
+This work studied principled algorithms for learning good policies in decision-making problems when a reward function is not available \emph{as a learning signal}. Our fundamental contributions are: (i)~a precise characterization of the statistical complexity for learning equilibria in Markov games from data, with the first rate-optimal algorithm (RMAX-RAVI-UCB-ZERO-BC); (ii)~the first min-max optimal and computationally efficient algorithm for IL from features in Linear MDPs (FRA-IL); (iii)~the first offline IL algorithm that learns \emph{without requiring expert realizability} (SPOIL/OVI); and (iv)~the first DPO-like algorithm provably avoiding over-optimization without any knowledge of the data-generating policy (PEPO).
+
+Despite these exciting results, several important directions remain open.
+
+\textbf{Beyond expected reward.}
+The suboptimality metric studied here is based on expected reward. However, small expected suboptimality does not exclude dangerous actions occurring with non-negligible probability. The uncertainty quantification techniques we developed for optimistic exploration (FRA-IL) and pessimistic regularization (PEPO) could be repurposed to detect high-risk situations and force the agent to abstain from acting. Designing no-regret abstention algorithms where the abstention cost reflects the missed opportunity is well studied in the bandit setting \citep{cortes2018online,neu2020fast,pasteris2024bandits}, but remains largely unexplored in multi-step decision-making, despite its clear practical relevance---as witnessed by benchmarks evaluating the abstention capability of modern LLMs \citep{fan2026halluhard}.
+
+\textbf{Coverage and test-time compute.}
+Expected reward also fails to capture the probability mass placed on the set of optimal actions (coverage \citep{chen2025coverage,wagenmaker2025posterior}). In modern LLM pipelines---where IL and alignment are followed by a test-time compute phase via Best of N (BoN) \citep{gui2024bonbon,huang2025best}---coverage rather than expected reward determines how effectively BoN improves quality. Extending the guarantees of this thesis to provide lower bounds on the success probability of BoN sampling from the output of an IL or alignment algorithm is therefore an important open problem.
+
+\textbf{Continuous action spaces.}
+IL is widely applied in robotics where the action space is continuous, yet our computational efficiency guarantees crucially rely on finite action spaces---a limitation shared by recent IL theory works \citep{foster2024behavior,rohatgi2025computational,joshi2025learning}. Action quantization \citep{dadashi2021continuous} and environment interaction \citep{viano2022proximal,viano2024imitation,moulin2025optimistically} offer promising paths beyond this limitation.
+
+All in all, we believe that reward alone \emph{is not enough} to guide the design of complex modern decision-making systems, particularly in LLMs and robotics. The results presented here and in today's growing literature are, we believe, just the first steps of an exciting journey.
+
 \newpage
-\bibliographystyle{plainnat}
+%\bibliographystyle{plainnat}
+%\bibliography{references}
+\bibliographystyleStr{plain}
+\bibliographyStr{refs1}
+
+
 \bibliography{references}
 \newpage
 \appendix
