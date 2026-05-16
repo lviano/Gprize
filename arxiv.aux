@@ -72,20 +72,32 @@
 \@writefile{loe}{\contentsline {theorem}{\ifthmt@listswap Theorem~3.4\else \numberline {3.4}Theorem\fi }{6}{theorem.4}\protected@file@percent }
 \citation{moulin2025inverseqlearningrightoffline}
 \citation{moulin2025inverseqlearningrightoffline}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Continuous control imitation learning experiments, results averaged across the 5 environments shown on the right. For any base algorithm considered (CSIL \cite  {watson2023coherent}, RKL \cite  {ni2021f}, ML-IRL \cite  {zeng2022structural}) injecting exploration in the policy updates via critics ensembles leads to faster learning.}}{7}{figure.caption.4}\protected@file@percent }
-\newlabel{fig:SOAR}{{2}{7}{Continuous control imitation learning experiments, results averaged across the 5 environments shown on the right. For any base algorithm considered (CSIL \cite {watson2023coherent}, RKL \cite {ni2021f}, ML-IRL \cite {zeng2022structural}) injecting exploration in the policy updates via critics ensembles leads to faster learning}{figure.caption.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Continuous control imitation learning experiments, results averaged across the 5 environments shown on the right. For any base IL algorithm considered (CSIL \cite  {watson2023coherent}, RKL \cite  {ni2021f}, ML-IRL \cite  {zeng2022structural}) injecting exploration in the policy updates via critics ensembles leads to faster learning.}}{7}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:SOAR}{{2}{7}{Continuous control imitation learning experiments, results averaged across the 5 environments shown on the right. For any base IL algorithm considered (CSIL \cite {watson2023coherent}, RKL \cite {ni2021f}, ML-IRL \cite {zeng2022structural}) injecting exploration in the policy updates via critics ensembles leads to faster learning}{figure.caption.4}{}}
 \newlabel{fig:SOAR@cref}{{[figure][2][]2}{[1][6][]7}{}{}{}}
 \@writefile{toc}{\contentsline {paragraph}{Practical take-away}{7}{section*.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {4}Beyond Limitation 3: IL without mimicking the expert.}{7}{section.4}\protected@file@percent }
 \@writefile{loe}{\contentsline {example}{\ifthmt@listswap Example~4.1\else \numberline {4.1}Example\fi }{7}{example.1}\protected@file@percent }
 \@writefile{loe}{\contentsline {example}{\ifthmt@listswap Example~4.2\else \numberline {4.2}Example\fi }{7}{example.2}\protected@file@percent }
 \citation{Ross:2011}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces  \textbf  {OVI enables smaller learner networks.} Average return ($y$-axis) as a function of the learner network hidden size ($x$-axis), over $50$ seeds and $10$ expert trajectories. We compare with offline and interactive policy-based methods (BC, DAgger) , and the offline value-based method SPOIL. Expert network is of size $64$, thus expert policy realizability holds only at the rightmost point of the $x$-axis. OVI outperforms all baselines across all network sizes. See \cref  {sec:experiments} for more details. }}{8}{figure.caption.6}\protected@file@percent }
-\newlabel{fig:size_scaling}{{3}{8}{\textbf {OVI enables smaller learner networks.} Average return ($y$-axis) as a function of the learner network hidden size ($x$-axis), over $50$ seeds and $10$ expert trajectories. We compare with offline and interactive policy-based methods (BC, DAgger) , and the offline value-based method SPOIL. Expert network is of size $64$, thus expert policy realizability holds only at the rightmost point of the $x$-axis. OVI outperforms all baselines across all network sizes. See \cref {sec:experiments} for more details}{figure.caption.6}{}}
+\citation{rafailov2023direct}
+\citation{gao2023scaling,park2024disentangling,xu2024is}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces  \textbf  {OVI enables smaller learner networks.} Average return ($y$-axis) as a function of the learner network hidden size ($x$-axis), over $50$ seeds and $10$ expert trajectories. We compare with offline and interactive policy-based methods (BC, DAgger) , and the offline value-based method SPOIL. Expert network is of size $64$, thus expert policy realizability holds only at the rightmost point of the $x$-axis. OVI outperforms all baselines across all network sizes. }}{8}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:size_scaling}{{3}{8}{\textbf {OVI enables smaller learner networks.} Average return ($y$-axis) as a function of the learner network hidden size ($x$-axis), over $50$ seeds and $10$ expert trajectories. We compare with offline and interactive policy-based methods (BC, DAgger) , and the offline value-based method SPOIL. Expert network is of size $64$, thus expert policy realizability holds only at the rightmost point of the $x$-axis. OVI outperforms all baselines across all network sizes}{figure.caption.6}{}}
 \newlabel{fig:size_scaling@cref}{{[figure][3][]3}{[1][8][]8}{}{}{}}
 \@writefile{loe}{\contentsline {theorem}{\ifthmt@listswap Theorem~4.3\else \numberline {4.3}Theorem\fi }{8}{theorem.3}\protected@file@percent }
 \@writefile{loe}{\contentsline {theorem}{\ifthmt@listswap Theorem~4.4\else \numberline {4.4}Theorem\fi }{8}{theorem.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Practical take-away}{8}{section*.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Beyond Limitation 4: robust offline alignment.}{8}{section.5}\protected@file@percent }
+\citation{huang2024correcting}
+\citation{liu2024provably}
+\citation{huang2024correcting}
+\citation{cui2023ultrafeedback}
+\citation{hu2022lora}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Win rate (\%) against the initial model on AlpacaEval2 across training epochs. Shaded regions indicate standard error of the mean across per-instruction preferences. We compare DPO and PEPO with varying ensemble sizes $L$. }}{9}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:winrate-initial}{{4}{9}{Win rate (\%) against the initial model on AlpacaEval2 across training epochs. Shaded regions indicate standard error of the mean across per-instruction preferences. We compare DPO and PEPO with varying ensemble sizes $L$}{figure.caption.7}{}}
+\newlabel{fig:winrate-initial@cref}{{[figure][4][]4}{[1][8][]9}{}{}{}}
+\@writefile{loe}{\contentsline {theorem}{\ifthmt@listswap Theorem~5.1\else \numberline {5.1}Theorem\fi }{9}{theorem.1}\protected@file@percent }
 \bibstyle{plainnat}
 \bibdata{references}
 \bibcite{Amodei:2016}{{1}{2016}{{Amodei et~al.}}{{Amodei, Olah, Steinhardt, Christiano, Schulman, and Man\'e}}}
@@ -97,29 +109,34 @@
 \bibcite{bratman2010new}{{7}{2010}{{Bratman}}{{}}}
 \bibcite{Cesa-Bianchi:2006}{{8}{2006}{{Cesa-Bianchi and Lugosi}}{{}}}
 \bibcite{christiano2017deep}{{9}{2017}{{Christiano et~al.}}{{Christiano, Leike, Brown, Martic, Legg, and Amodei}}}
-\bibcite{foster2024behavior}{{10}{2024}{{Foster et~al.}}{{Foster, Block, and Misra}}}
-\bibcite{grujic2022rational}{{11}{2022}{{Grujic et~al.}}{{Grujic, Brus, Burdakov, and Polania}}}
-\bibcite{huang2024correcting}{{12}{2024}{{Huang et~al.}}{{Huang, Zhan, Xie, Lee, Sun, Krishnamurthy, and Foster}}}
-\bibcite{jin2019provably}{{13}{2019}{{Jin et~al.}}{{Jin, Yang, Wang, and Jordan}}}
-\bibcite{liu2024provably}{{14}{2024}{{Liu et~al.}}{{Liu, Lu, Zhang, Liu, Guo, Yang, Blanchet, and Wang}}}
-\bibcite{moulin2025inverseqlearningrightoffline}{{15}{2025{a}}{{Moulin et~al.}}{{Moulin, Neu, and Viano}}}
-\bibcite{moulin2025optimistically}{{16}{2025{b}}{{Moulin et~al.}}{{Moulin, Neu, and Viano}}}
-\bibcite{Ng:2000}{{17}{2000}{{Ng and Russell}}{{}}}
-\bibcite{ni2021f}{{18}{2021}{{Ni et~al.}}{{Ni, Sikchi, Wang, Gupta, Lee, and Eysenbach}}}
-\bibcite{Osa:2018}{{19}{2018}{{Osa et~al.}}{{Osa, Pajarinen, Neumann, Bagnell, Abbeel, and Peters}}}
-\bibcite{ouyang2022training}{{20}{2022}{{Ouyang et~al.}}{{Ouyang, Wu, Jiang, Almeida, Wainwright, Mishkin, Zhang, Agarwal, Slama, Ray, et~al.}}}
-\bibcite{Pomerleau:1991}{{21}{1991}{{Pomerleau}}{{}}}
-\bibcite{rafailov2023direct}{{22}{2023}{{Rafailov et~al.}}{{Rafailov, Sharma, Mitchell, Manning, Ermon, and Finn}}}
-\bibcite{rajaraman2020toward}{{23}{2020}{{Rajaraman et~al.}}{{Rajaraman, Yang, Jiao, and Ramchandran}}}
-\bibcite{rohatgi2025computational}{{24}{2025}{{Rohatgi et~al.}}{{Rohatgi, Block, Huang, Krishnamurthy, and Foster}}}
-\bibcite{Ross:2011}{{25}{2011}{{Ross et~al.}}{{Ross, Gordon, and Bagnell}}}
-\bibcite{Russell:1998}{{26}{1998}{{Russell}}{{}}}
-\bibcite{schaffner2021neural}{{27}{2021}{{Schaffner et~al.}}{{Schaffner, Tobler, Hare, and Polania}}}
-\bibcite{silver2021reward}{{28}{2021}{{Silver et~al.}}{{Silver, Singh, Precup, and Sutton}}}
-\bibcite{Sutton:1998}{{29}{1998}{{Sutton and Barto}}{{}}}
-\bibcite{torabi2018behavioral}{{30}{2018}{{Torabi et~al.}}{{Torabi, Warnell, and Stone}}}
-\bibcite{viano2026multi}{{31}{2026}{{Viano et~al.}}{{Viano, Freihaut, Nevali, Cevher, Geist, and Ramponi}}}
-\bibcite{watson2023coherent}{{32}{2023}{{Watson et~al.}}{{Watson, Huang, and Heess}}}
-\bibcite{zeng2022structural}{{33}{2022}{{Zeng et~al.}}{{Zeng, Hong, and Garcia}}}
+\bibcite{cui2023ultrafeedback}{{10}{2023}{{Cui et~al.}}{{Cui, Yuan, Ding, Yao, Zhu, Ni, Xie, Liu, and Sun}}}
+\bibcite{foster2024behavior}{{11}{2024}{{Foster et~al.}}{{Foster, Block, and Misra}}}
+\bibcite{gao2023scaling}{{12}{2023}{{Gao et~al.}}{{Gao, Schulman, and Hilton}}}
+\bibcite{grujic2022rational}{{13}{2022}{{Grujic et~al.}}{{Grujic, Brus, Burdakov, and Polania}}}
+\bibcite{hu2022lora}{{14}{2022}{{Hu et~al.}}{{Hu, Shen, Wallis, Allen-Zhu, Li, Wang, Wang, and Chen}}}
+\bibcite{huang2024correcting}{{15}{2024}{{Huang et~al.}}{{Huang, Zhan, Xie, Lee, Sun, Krishnamurthy, and Foster}}}
+\bibcite{jin2019provably}{{16}{2019}{{Jin et~al.}}{{Jin, Yang, Wang, and Jordan}}}
+\bibcite{liu2024provably}{{17}{2024}{{Liu et~al.}}{{Liu, Lu, Zhang, Liu, Guo, Yang, Blanchet, and Wang}}}
+\bibcite{moulin2025inverseqlearningrightoffline}{{18}{2025{a}}{{Moulin et~al.}}{{Moulin, Neu, and Viano}}}
+\bibcite{moulin2025optimistically}{{19}{2025{b}}{{Moulin et~al.}}{{Moulin, Neu, and Viano}}}
+\bibcite{Ng:2000}{{20}{2000}{{Ng and Russell}}{{}}}
+\bibcite{ni2021f}{{21}{2021}{{Ni et~al.}}{{Ni, Sikchi, Wang, Gupta, Lee, and Eysenbach}}}
+\bibcite{Osa:2018}{{22}{2018}{{Osa et~al.}}{{Osa, Pajarinen, Neumann, Bagnell, Abbeel, and Peters}}}
+\bibcite{ouyang2022training}{{23}{2022}{{Ouyang et~al.}}{{Ouyang, Wu, Jiang, Almeida, Wainwright, Mishkin, Zhang, Agarwal, Slama, Ray, et~al.}}}
+\bibcite{park2024disentangling}{{24}{2024}{{Park et~al.}}{{Park, Rafailov, Ermon, and Finn}}}
+\bibcite{Pomerleau:1991}{{25}{1991}{{Pomerleau}}{{}}}
+\bibcite{rafailov2023direct}{{26}{2023}{{Rafailov et~al.}}{{Rafailov, Sharma, Mitchell, Manning, Ermon, and Finn}}}
+\bibcite{rajaraman2020toward}{{27}{2020}{{Rajaraman et~al.}}{{Rajaraman, Yang, Jiao, and Ramchandran}}}
+\bibcite{rohatgi2025computational}{{28}{2025}{{Rohatgi et~al.}}{{Rohatgi, Block, Huang, Krishnamurthy, and Foster}}}
+\bibcite{Ross:2011}{{29}{2011}{{Ross et~al.}}{{Ross, Gordon, and Bagnell}}}
+\bibcite{Russell:1998}{{30}{1998}{{Russell}}{{}}}
+\bibcite{schaffner2021neural}{{31}{2021}{{Schaffner et~al.}}{{Schaffner, Tobler, Hare, and Polania}}}
+\bibcite{silver2021reward}{{32}{2021}{{Silver et~al.}}{{Silver, Singh, Precup, and Sutton}}}
+\bibcite{Sutton:1998}{{33}{1998}{{Sutton and Barto}}{{}}}
+\bibcite{torabi2018behavioral}{{34}{2018}{{Torabi et~al.}}{{Torabi, Warnell, and Stone}}}
+\bibcite{viano2026multi}{{35}{2026}{{Viano et~al.}}{{Viano, Freihaut, Nevali, Cevher, Geist, and Ramponi}}}
+\bibcite{watson2023coherent}{{36}{2023}{{Watson et~al.}}{{Watson, Huang, and Heess}}}
+\bibcite{xu2024is}{{37}{2024}{{Xu et~al.}}{{Xu, Fu, Gao, Ye, Liu, Mei, Wang, Yu, and Wu}}}
+\bibcite{zeng2022structural}{{38}{2022}{{Zeng et~al.}}{{Zeng, Hong, and Garcia}}}
 \ttl@finishall
-\gdef \@abspage@last{10}
+\gdef \@abspage@last{12}

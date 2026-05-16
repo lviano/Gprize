@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.9.4)  16 MAY 2026 13:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.9.4)  16 MAY 2026 16:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1417,7 +1417,7 @@ rid,axis ticks,axis lines,axis tick labels,pre main,main,axis descriptions,axis
 
 
 [5]
-<figures/ch2/method_averages_comparison_with_ci.pdf, id=232, 1084.05pt x 433.62
+<figures/ch2/method_averages_comparison_with_ci.pdf, id=236, 1084.05pt x 433.62
 pt>
 File: figures/ch2/method_averages_comparison_with_ci.pdf Graphic file (type pdf
 )
@@ -1425,7 +1425,7 @@ File: figures/ch2/method_averages_comparison_with_ci.pdf Graphic file (type pdf
 Package pdftex.def Info: figures/ch2/method_averages_comparison_with_ci.pdf  us
 ed on input line 403.
 (pdftex.def)             Requested size: 263.06265pt x 105.2222pt.
-<figures/ch2/mujoco2.png, id=233, 717.68124pt x 519.9425pt>
+<figures/ch2/mujoco2.png, id=237, 717.68124pt x 519.9425pt>
 File: figures/ch2/mujoco2.png Graphic file (type png)
 <use figures/ch2/mujoco2.png>
 Package pdftex.def Info: figures/ch2/mujoco2.png  used on input line 417.
@@ -1460,32 +1460,41 @@ as been already used, duplicate ignored
                    \relax 
 l.480 \begin{theorem} \textbf
                              {Expert interaction enables efficient learning ...
-<figures/size_scaling_figure_pendulum.pdf, id=331, 567.91475pt x 212.74481pt>
+<figures/size_scaling_figure_pendulum.pdf, id=335, 567.91475pt x 212.74481pt>
 File: figures/size_scaling_figure_pendulum.pdf Graphic file (type pdf)
 <use figures/size_scaling_figure_pendulum.pdf>
 Package pdftex.def Info: figures/size_scaling_figure_pendulum.pdf  used on inpu
 t line 496.
 (pdftex.def)             Requested size: 469.75502pt x 175.97433pt.
-
-LaTeX Warning: Reference `sec:experiments' on page 1 undefined on input line 49
-8.
-
-
-LaTeX Warning: Reference `sec:experiments' on page 1 undefined on input line 49
-8.
-
+<figures/ch5/win_rate_initial.pdf, id=338, 1141.64702pt x 295.94252pt>
+File: figures/ch5/win_rate_initial.pdf Graphic file (type pdf)
+<use figures/ch5/win_rate_initial.pdf>
+Package pdftex.def Info: figures/ch5/win_rate_initial.pdf  used on input line 5
+07.
+(pdftex.def)             Requested size: 469.75502pt x 121.77072pt.
 
 
-[8 <./figures/size_scaling_figure_pendulum.pdf>] (./arxiv.bbl
+[8 <./figures/size_scaling_figure_pendulum.pdf>]
+pdfTeX warning (ext4): destination with the same identifier (name{theorem.1}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.539 \begin{theorem} \textbf
+                             {PEPO avoids over-optimization without knowing ...
+
+
+[9 <./figures/ch5/win_rate_initial.pdf>]
+
+[10] (./arxiv.bbl
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
 
-[9])
+[11])
 
-[10]
+[12]
 
 Package caption Warning: Unused \captionsetup[sub] on input line 49.
 See the caption package documentation for explanation.
@@ -1495,19 +1504,15 @@ See the caption package documentation for explanation.
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `arxiv.out' has not changed.
-(rerunfilecheck)             Checksum: 89ED5A8D8C7E901379D8F0F74B8FF8CE;1754.
+(rerunfilecheck)             Checksum: AF688849056F0889A1B5E68B60510859;2042.
  ) 
 Here is how much of TeX's memory you used:
- 46358 strings out of 473190
- 1062519 string characters out of 5715801
+ 46407 strings out of 473190
+ 1063498 string characters out of 5715801
  1590376 words of memory out of 5000000
- 68511 multiletter control sequences out of 15000+600000
- 589680 words of font info for 215 fonts, out of 8000000 for 9000
+ 68536 multiletter control sequences out of 15000+600000
+ 590255 words of font info for 222 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,17n,101p,1739b,2194s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
@@ -1541,10 +1546,10 @@ pe1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type
 public/cm-super/sfti0900.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/pu
 blic/cm-super/sfti1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/publ
 ic/cm-super/sftt1000.pfb>
-Output written on arxiv.pdf (10 pages, 992233 bytes).
+Output written on arxiv.pdf (12 pages, 1034952 bytes).
 PDF statistics:
- 524 PDF objects out of 1000 (max. 8388607)
- 383 compressed objects within 4 object streams
- 84 named destinations out of 1000 (max. 500000)
- 51900 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 640 PDF objects out of 1000 (max. 8388607)
+ 439 compressed objects within 5 object streams
+ 94 named destinations out of 1000 (max. 500000)
+ 51913 words of extra memory for PDF output out of 61914 (max. 10000000)
 

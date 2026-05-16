@@ -279,7 +279,7 @@ This allows to observe how the opponents policies behave in states that would ne
     %bottom=0pt,
     width=\linewidth
   ]
-\begin{theorem} \textbf{RMAX-RAVI-UCB-ZERO-BC \citep{viano2026multi} learns in a any game.}
+\begin{theorem} \textbf{RMAX-RAVI-UCB-ZERO-BC \citep{viano2026multi} learns in any game.}
     LSVI-UCB-ZERO-BC outputs a policy $\piout$ which is a $\varepsilon$-Nash Equilibrium with probability at least $1-\delta$ after 
     $\mathcal{O}\br{\log(1/\delta) \varepsilon^{-2}}$ expert samples.
 \end{theorem}
@@ -417,7 +417,7 @@ Remarkably, as shown in \Cref{fig:SOAR}, we noticed a consistent improvement for
         \includegraphics[width=\linewidth]{figures/ch2/mujoco2.png}
     \end{minipage}
     
-    \caption{Continuous control imitation learning experiments, results averaged across the 5 environments shown on the right. For any base algorithm considered (CSIL \cite{watson2023coherent}, RKL \cite{ni2021f}, ML-IRL \cite{zeng2022structural}) injecting exploration in the policy updates via critics ensembles leads to faster learning.}
+    \caption{Continuous control imitation learning experiments, results averaged across the 5 environments shown on the right. For any base IL algorithm considered (CSIL \cite{watson2023coherent}, RKL \cite{ni2021f}, ML-IRL \cite{zeng2022structural}) injecting exploration in the policy updates via critics ensembles leads to faster learning.}
     \label{fig:SOAR}
     
     \end{figure}
@@ -478,8 +478,8 @@ we cast a game between a policy player and this time a $Q$-values player, not a 
     width=\linewidth
   ]
 \begin{theorem} \textbf{Expert interaction enables efficient learning under Case II.}
-Given $\cQ$ satisfying \textbf{Case II}, OVI learns a $\varepsilon$-optimal policy after $\cO(\varepsilon^4)$ expert 
-queries or $\cO(\varepsilon^2)$ if $\cQ$ is convex.
+Given $\cQ$ satisfying \textbf{Case II}, OVI learns a $\varepsilon$-optimal policy after $\cO(\varepsilon^{-4})$ expert 
+queries or $\cO(\varepsilon^{-2})$ if $\cQ$ is convex.
 \end{theorem}
 \end{tcolorbox}
 \paragraph{Practical take-away}
@@ -495,9 +495,73 @@ becomes stronger and stronger compared to the maximum likelihood based approachs
     \centering
     \includegraphics[width=\linewidth]{figures/size_scaling_figure_pendulum.pdf}
     \caption{
-    \textbf{OVI enables smaller learner networks.} Average return ($y$-axis) as a function of the learner network hidden size ($x$-axis), over $50$ seeds and $10$ expert trajectories. We compare with offline and interactive policy-based methods (BC, DAgger) , and the offline value-based method SPOIL. Expert network is of size $64$, thus expert policy realizability holds only at the rightmost point of the $x$-axis. OVI outperforms all baselines across all network sizes. See \cref{sec:experiments} for more details. \label{fig:size_scaling}}
+    \textbf{OVI enables smaller learner networks.} Average return ($y$-axis) as a function of the learner network hidden size ($x$-axis), over $50$ seeds and $10$ expert trajectories. We compare with offline and interactive policy-based methods (BC, DAgger) , and the offline value-based method SPOIL. Expert network is of size $64$, thus expert policy realizability holds only at the rightmost point of the $x$-axis. OVI outperforms all baselines across all network sizes. \label{fig:size_scaling}}
     \vspace{-0.8em}
 \end{figure*}
+\section{Beyond Limitation 4: robust offline alignment.}
+The last part of my thesis focuses on learning from preferences that can be seen as an extension of imitation learning 
+where the learner is informed not only about what to imitate but also about which actions to avoid. 
+Among existing approaches for learning from preferences (a.k.a. alignment), \emph{Direct Preference Optimization} (DPO) \citep{rafailov2023direct} has gained widespread adoption due to its strong empirical performance and simplicity of implementation: indeed, DPO elegantly bypasses the intermediate step of learning a reward function from the preference dataset. 
+\begin{figure*}[t]
+    \centering
+\includegraphics[width=\textwidth]{figures/ch5/win_rate_initial.pdf}
+    \caption{Win rate (\%) against the initial model on AlpacaEval2 across training epochs. Shaded regions indicate standard error of the mean across per-instruction preferences. We compare DPO and PEPO with varying ensemble sizes $L$. %As expected by our theory, PEPO does not show signs of overoptimizationconsistently outperforms DPO., %with more pronounced improvements on models with stronger initial GPT-4 win rates (\texttt{Yi-34B-Chat} (27.5\%) and \texttt{Llama-3.1-Tulu-3-8B-SFT} (8.6\%) show larger gains compared to \texttt{Mistral-7B} (4.1\%) and \texttt{Zephyr-7B} (3.5\%)).
+    }
+    \label{fig:winrate-initial}
+\end{figure*}
+%However, on the negative side, DPO is known to suffer from the over-optimization issue: the algorithm can quickly overfit on the preference dataset leading to models which are worse than the starting one \citep{park2024disentangling,gao2023scaling,xu2024dpo}. 
+Despite these advantages, DPO is known to suffer from \emph{over-optimization}: as training progresses, improvements in optimizing the training loss do not necessarily translate into better generation quality, and may even degrade performance relative to the initial model \citep{gao2023scaling, park2024disentangling, xu2024is}.
+Moreover, early stopping using the validation loss as a criterion is not reliable because it is only a loose proxy for what really matters, i.e. the quality of the responses that the model can generate in practice. 
+Several new DPO variants 
+%have been proposed to 
+mitigate over-optimization via \emph{pessimistic regularization}. 
+
+Notably, approaches such as $\chi^2$-regularized preference optimization ($\chi^2$PO) \citep{huang2024correcting} and DPO augmented with supervised fine-tuning (DPO+SFT) \citep{liu2024provably} achieve guarantees that depend only on a \emph{single-policy} concentrability coefficient $C^\star = \sum_{x,a\in \X\times\A} \initial(x) \frac{(\pi^\star(a|x))^2}{\pidata(a|x)}$, which is the theoretical certificate of robustness to over-optimization \citep{huang2024correcting}. 
+In contrast, DPO is guaranteed to find a good approximation of the maximizer of \eqref{eq:PEPOgoal} only when $C^{\mathrm{all}} = \sup_{\pi:\X\rightarrow \Delta_{\A}}\sum_{x,a\in \X\times\A} \initial(x) \frac{(\pi^\star(a|x))^2}{\pidata(a|x)}$ is bounded.
+
+However, they rely on the assumption that we have access to the data-generating distribution $\pidata$, an assumption 
+which is often broken in practice, for instance, when smaller models are post-trained 
+using preference data (e.g.  the UltraFeedback dataset  \citep{cui2023ultrafeedback} ) generated by larger, proprietary systems 
+whose logits can not be accessed when fine-tuning the smaller models. 
+In the last chapter of my thesis, I remove this limitation with a new algorithm: PEPO.
+The central idea behind PEPO is to resort to \emph{pessimism via ensembles}: a technique as simple as unexplored in the context of LLM alignment, especially in the DPO setting.
+Concretely, PEPO trains an ensemble of $L$ lightweight DPO-style policies on disjoint subsets of the preference dataset, implemented via low-rank adapters \citep{hu2022lora}. Finally, at generation time, we use a certain notion of ensemble agreement to generate responses either via rejection sampling or approximating the (otherwise intractable) response-level normalization constant to the token-level counterpart.
+All in all, we obtain the following formal guarantees.
+\begin{tcolorbox}[
+    colback=orange!10!white,
+    colframe=orange!80!black,
+    %boxrule=0.8pt,
+    %arc=2pt,
+    %boxsep=2pt,
+    %bottom=0pt,
+    width=\linewidth
+  ]
+\begin{theorem} \textbf{PEPO avoids over-optimization without knowing $\pidata$.}
+PEPO learns, with probability $1-\delta$, a $\varepsilon$-optimal policy for \eqref{eq:PEPOgoal}, when given a dataset of size $\cO\br{\nicefrac{C^\star \log(1/\delta)}{\varepsilon^2}}$ preferences.
+\end{theorem}
+\end{tcolorbox}
+Notably, in the above theorem there is no dependence at all on $C^{\mathrm{all}}$ and the dependence on $C^\star$ is better then what obtained in prior works. 
+Finally, the result is attained without knowing $\pidata$.
+Practically, we tested our method in which $\pidata$ is unknown because the responses 
+in the dataset are generated by
+a non-public model and noticed that while the performance of DPO increases initially,
+ it decreases drastically after a certain number of epochs (see \Cref{fig:winrate-initial}). In contrast, PEPO's performance increases in a monotonic manner 
+ in all four cases which differ in the choice of the initial model $\piref$.
+The performance in this context is measured with the LLM-as-a-judge protocol.
+A large LLM (Llama-70B) has to decide the winner among one response generated by the starting model $\piref$
+and one from the model fine tuned via DPO or PEPO. Then, the performance is the percentage of wins that the fine-tuned model attains.
+
+It can also be notice that the ensemble size $L$ has a strong effect on the performance. Our theory provides 
+guidance for the optimal choice. In particular, if $L$ is too small than we can not guarantee
+that we estimate pessimistically the true reward gap.
+On the contrary, when $L$ is too large, then each LoRA model is trained with a too small amount of data. All in all, the best choice of $L$ is the 
+smallest one among the values small enough to guarantee pessimism. This change depending on the initial model $\piref$. 
+For example, it can be seen in \Cref{fig:winrate-initial} that for Llama, with $L=2$ we still suffer overoptimization, i.e. the performance drops after some epochs.
+In contrast, $L=2$ is the best choice for Zephyr.
+Finally, we remark that PEPO remains effective at scale as confirmed by our finetuning 
+experiment on a 34B model, Yi-34B.
+
+\section{Conclusions}
 
 \newpage
 \bibliographystyle{plainnat}
