@@ -7,6 +7,7 @@
 \usepackage{authblk}
 \usepackage{subcaption}
 \usepackage{natbib}
+\usepackage{bbding}
 \usepackage{booktabs} % for professional tables
 \usepackage{etoc}
 \usepackage{titletoc}
@@ -582,10 +583,12 @@ All in all, we believe that reward alone \emph{is not enough} to guide the desig
 \newpage
 %\bibliographystyle{plainnat}
 %\bibliography{references}
+\addtocontents{toc}{\vspace*{0.5cm}}
+\addcontentsline{toc}{chapter}{Bibliography}
 \bibliographystyleStr{plain}
 \bibliographyStr{refs1}
 
-
+\bibliographystyle{plainnat}
 \bibliography{references}
 \newpage
 \appendix

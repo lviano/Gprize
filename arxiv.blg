@@ -1,46 +1,46 @@
 This is BibTeX, Version 0.99d (TeX Live 2025)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: arxiv.aux
-I found no \bibstyle command---while reading file arxiv.aux
+The style file: plainnat.bst
+Database file #1: references.bib
 You've used 49 entries,
-            0 wiz_defined-function locations,
-            141 strings with 1380 characters,
-and the built_in function-call counts, 0 in all, are:
-= -- 0
-> -- 0
-< -- 0
-+ -- 0
-- -- 0
-* -- 0
-:= -- 0
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
-chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 0
-format.name$ -- 0
-if$ -- 0
-int.to.chr$ -- 0
-int.to.str$ -- 0
-missing$ -- 0
-newline$ -- 0
-num.names$ -- 0
-pop$ -- 0
-preamble$ -- 0
-purify$ -- 0
+            2773 wiz_defined-function locations,
+            848 strings with 14539 characters,
+and the built_in function-call counts, 26634 in all, are:
+= -- 2224
+> -- 2073
+< -- 19
++ -- 695
+- -- 645
+* -- 2274
+:= -- 4155
+add.period$ -- 152
+call.type$ -- 49
+change.case$ -- 359
+chr.to.int$ -- 48
+cite$ -- 98
+duplicate$ -- 1087
+empty$ -- 1877
+format.name$ -- 708
+if$ -- 5513
+int.to.chr$ -- 2
+int.to.str$ -- 1
+missing$ -- 47
+newline$ -- 252
+num.names$ -- 196
+pop$ -- 766
+preamble$ -- 1
+purify$ -- 312
 quote$ -- 0
-skip$ -- 0
+skip$ -- 916
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
-text.length$ -- 0
+substring$ -- 687
+swap$ -- 139
+text.length$ -- 8
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
+type$ -- 524
 warning$ -- 0
-while$ -- 0
+while$ -- 187
 width$ -- 0
-write$ -- 0
-(There was 1 error message)
+write$ -- 620
