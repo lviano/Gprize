@@ -1,17 +1,52 @@
 \begin{thebibliography}{1}
 
+\bibitem{barla2026provably}
+Adam Barla\textcolor{red}{$^\star$}, Emanuele Nevali\textcolor{red}{$^\star$},
+  Luca \textbf{Viano}\textcolor{red}{$^\star$}, and Volkan Cevher.
+\newblock Provably avoiding over-optimization in direct preference optimization
+  without knowing the data distribution.
+\newblock {\em arXiv preprint arXiv:2602.06239}, 2026.
+
+\bibitem{freihaut2025learning}
+Till Freihaut\textcolor{red}{$^\star$}, Luca
+  \textbf{Viano}\textcolor{red}{$^\star$}, Volkan Cevher, Matthieu Geist, and
+  Giorgia Ramponi.
+\newblock Learning equilibria from data: Provably efficient multi-agent
+  imitation learning.
+\newblock {\em Advances in Neural Information Processing Systems}, 2025.
+
+\bibitem{freihaut2026rate}
+Till Freihaut\textcolor{red}{$^\star$}, Luca
+  \textbf{Viano}\textcolor{red}{$^\star$}, Emanuele Nevali, Volkan Cevher,
+  Matthieu Geist, and Giorgia Ramponi.
+\newblock Rate optimal learning equilibria from data.
+\newblock {\em AISTATS}, 2026.
+
+\bibitem{moulin2025inverse}
+\textcolor{purple}{$(\alpha\beta)$}~Antoine Moulin, Gergely Neu, and Luca
+  \textbf{Viano}.
+\newblock Inverse q-learning done right: Offline imitation learning in
+  $q^\pi$-realizable mdps.
+\newblock {\em Advances in Neural Information Processing Systems}, 2025.
+
 \bibitem{moulin2025optimistically}
 \textcolor{purple}{$(\alpha\beta)$}~Antoine Moulin, Gergely Neu, and Luca
-  Viano.
+  \textbf{Viano}.
 \newblock Optimistically optimistic exploration for provably efficient
   infinite-horizon reinforcement and imitation learning.
 \newblock {\em Conference on Learning Theory}, 2025.
 
 \bibitem{viano2026multi}
-Luca Viano, Till Freihaut, Emanuele Nevali, Volkan Cevher, Matthieu Geist, and
-  Giorgia Ramponi.
+Luca \textbf{Viano}, Till Freihaut, Emanuele Nevali, Volkan Cevher, Matthieu
+  Geist, and Giorgia Ramponi.
 \newblock Multi-agent imitation learning with function approximation: Linear
   markov games and beyond.
 \newblock {\em Forty-third International Conference on Machine Learning}, 2026.
+
+\bibitem{viel2025soar}
+Stefano Viel\textcolor{red}{$^\star$}, Luca
+  \textbf{Viano}\textcolor{red}{$^\star$}, and Volkan Cevher.
+\newblock Il-soar: Imitation learning with soft optimistic actor critic.
+\newblock {\em International Conference on Machine Learning}, 2025.
 
 \end{thebibliography}

@@ -3,44 +3,46 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: arxiv.aux
 The style file: plainnat.bst
 Database file #1: references.bib
-You've used 49 entries,
+Warning--I didn't find a database entry for "moulin2025optimistically"
+You've used 43 entries,
             2773 wiz_defined-function locations,
-            848 strings with 14539 characters,
-and the built_in function-call counts, 26634 in all, are:
-= -- 2224
-> -- 2073
+            824 strings with 13286 characters,
+and the built_in function-call counts, 23535 in all, are:
+= -- 1974
+> -- 1812
 < -- 19
-+ -- 695
-- -- 645
-* -- 2274
-:= -- 4155
-add.period$ -- 152
-call.type$ -- 49
-change.case$ -- 359
-chr.to.int$ -- 48
-cite$ -- 98
-duplicate$ -- 1087
-empty$ -- 1877
-format.name$ -- 708
-if$ -- 5513
-int.to.chr$ -- 2
++ -- 607
+- -- 564
+* -- 1994
+:= -- 3659
+add.period$ -- 133
+call.type$ -- 43
+change.case$ -- 314
+chr.to.int$ -- 43
+cite$ -- 86
+duplicate$ -- 966
+empty$ -- 1666
+format.name$ -- 621
+if$ -- 4886
+int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 47
-newline$ -- 252
-num.names$ -- 196
-pop$ -- 766
+missing$ -- 42
+newline$ -- 221
+num.names$ -- 172
+pop$ -- 672
 preamble$ -- 1
-purify$ -- 312
+purify$ -- 273
 quote$ -- 0
-skip$ -- 916
+skip$ -- 819
 stack$ -- 0
-substring$ -- 687
-swap$ -- 139
+substring$ -- 638
+swap$ -- 130
 text.length$ -- 8
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 524
+type$ -- 458
 warning$ -- 0
-while$ -- 187
+while$ -- 167
 width$ -- 0
-write$ -- 620
+write$ -- 545
+(There was 1 warning)

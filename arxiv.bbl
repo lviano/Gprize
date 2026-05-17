@@ -1,4 +1,4 @@
-\begin{thebibliography}{49}
+\begin{thebibliography}{43}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -79,13 +79,6 @@ Ganqu Cui, Lifan Yuan, Ning Ding, Guanming Yao, Wei Zhu, Yuan Ni, Guotong Xie,
 \newblock Ultrafeedback: Boosting language models with high-quality feedback,
   2023.
 
-\bibitem[Dadashi et~al.(2021)Dadashi, Hussenot, Vincent, Girgin, Raichuk,
-  Geist, and Pietquin]{dadashi2021continuous}
-Robert Dadashi, L{\'e}onard Hussenot, Damien Vincent, Sertan Girgin, Anton
-  Raichuk, Matthieu Geist, and Olivier Pietquin.
-\newblock Continuous control with action quantization from demonstrations.
-\newblock \emph{arXiv preprint arXiv:2110.10149}, 2021.
-
 \bibitem[Fan et~al.(2026)Fan, Delsad, Flammarion, and
   Andriushchenko]{fan2026halluhard}
 Dongyang Fan, Sebastien Delsad, Nicolas Flammarion, and Maksym Andriushchenko.
@@ -146,13 +139,6 @@ Chi Jin, Zhuoran Yang, Zhaoran Wang, and Michael~I. Jordan.
 \newblock Provably efficient reinforcement learning with linear function
   approximation, 2019.
 
-\bibitem[Joshi et~al.(2025)Joshi, Li, Bhandari, Kasiviswanathan, Ma, and
-  Srebro]{joshi2025learning}
-Nirmit Joshi, Gene Li, Siddharth Bhandari, Shiva~Prasad Kasiviswanathan, Cong
-  Ma, and Nathan Srebro.
-\newblock Learning to answer from correct demonstrations.
-\newblock \emph{arXiv preprint arXiv:2510.15464}, 2025.
-
 \bibitem[Liu et~al.(2024)Liu, Lu, Zhang, Liu, Guo, Yang, Blanchet, and
   Wang]{liu2024provably}
 Zhihan Liu, Miao Lu, Shenao Zhang, Boyi Liu, Hongyi Guo, Yingxiang Yang, Jose
@@ -161,20 +147,6 @@ Zhihan Liu, Miao Lu, Shenao Zhang, Boyi Liu, Hongyi Guo, Yingxiang Yang, Jose
   implicitly an adversarial regularizer.
 \newblock \emph{Advances in Neural Information Processing Systems},
   37:\penalty0 138663--138697, 2024.
-
-\bibitem[Moulin et~al.(2025{\natexlab{a}})Moulin, Neu, and
-  Viano]{moulin2025inverseqlearningrightoffline}
-Antoine Moulin, Gergely Neu, and Luca Viano.
-\newblock Inverse q-learning done right: Offline imitation learning in
-  $q^\pi$-realizable mdps, 2025{\natexlab{a}}.
-\newblock URL \url{https://arxiv.org/abs/2505.19946}.
-
-\bibitem[Moulin et~al.(2025{\natexlab{b}})Moulin, Neu, and
-  Viano]{moulin2025optimistically}
-Antoine Moulin, Gergely Neu, and Luca Viano.
-\newblock Optimistically optimistic exploration for provably efficient
-  infinite-horizon reinforcement and imitation learning.
-\newblock \emph{arXiv preprint arXiv:2502.13900}, 2025{\natexlab{b}}.
 
 \bibitem[Neu and Zhivotovskiy(2020)]{neu2020fast}
 Gergely Neu and Nikita Zhivotovskiy.
@@ -287,21 +259,6 @@ R.~S. Sutton and A.~G. Barto.
 Faraz Torabi, Garrett Warnell, and Peter Stone.
 \newblock Behavioral cloning from observation.
 \newblock \emph{arXiv preprint arXiv:1805.01954}, 2018.
-
-\bibitem[Viano et~al.(2022)Viano, Kamoutsi, Neu, Krawczuk, and
-  Cevher]{viano2022proximal}
-Luca Viano, Angeliki Kamoutsi, Gergely Neu, Igor Krawczuk, and Volkan Cevher.
-\newblock Proximal point imitation learning.
-\newblock \emph{Advances in Neural Information Processing Systems},
-  35:\penalty0 24309--24326, 2022.
-
-\bibitem[Viano et~al.(2024)Viano, Skoulakis, and Cevher]{viano2024imitation}
-Luca Viano, Stratis Skoulakis, and Volkan Cevher.
-\newblock Imitation learning in discounted linear {MDP}s without exploration
-  assumptions.
-\newblock In \emph{Forty-first International Conference on Machine Learning},
-  2024.
-\newblock URL \url{https://openreview.net/forum?id=DChQpB4AJy}.
 
 \bibitem[Wagenmaker et~al.(2025)Wagenmaker, Dong, Tsao, Finn, and
   Levine]{wagenmaker2025posterior}

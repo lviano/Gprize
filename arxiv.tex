@@ -262,12 +262,13 @@ As said, before my thesis BC was not studied in the context of imitation learnin
     %bottom=0pt,
     width=\linewidth
   ]
-\begin{theorem} \textbf{Behavioral cloning fails in games}
+\begin{theorem} \textbf{Behavioral cloning fails in games \citeStr{freihaut2025learning}}
 There exists a Markov Game and a Nash equilibrium profile, such that the output $\piout$ of BC or any other offline IL algorithm is
 arbitrarily far from being a Nash Equilibrium. That is,
 $$\max_{i\in[n]}\max_{\pi^i \in \Pi^i}\sum_{x,a^1, \dots,a^n} \br{\mu^{\pi^i, \pi^{-i}_{\mathrm{NE}}}(x,a^1, \dots,a^n) - \mu^{\pi_{\mathrm{NE}}}(x,a^1, \dots,a^n)}r(x,a^1, \dots,a^n) \geq \Omega\br{\frac{1}{1-\gamma}}.$$
 \end{theorem}
 \end{tcolorbox}
+Moreover, our later work \citeStr{freihaut2026rate} that, even when BC converges, its rate is suboptimal.
 Next, we present a new algorithm named RMAX-RAVI-UCB-ZERO-BC that is guaranteed to learn a $\varepsilon$-Nash equilibrium in any game. Key for the success is to allow a more powerful access model to the expert.
 That is, the learner can sample a joint action expert policy profile \emph{from any visited state} and not only from the states in the expert dataset.
 Intuitively this means that we do not only observe strong players playing among them but we can play according to a policy of our choice against the other player's strong policy. 
@@ -366,7 +367,7 @@ We make this negative result precise in the following.
     %bottom=0pt,
     width=\linewidth
   ]
-\begin{theorem} \textbf{Imitation Learning from features requires environment access. \citep{moulin2025optimistically}}
+\begin{theorem} \textbf{Imitation Learning from features requires environment access. \citepStr{moulin2025optimistically}}
     For any algorithm $\mathrm{Alg}$ having access only to a features dataset, there exists an MDP and an expert policy such that $\mathrm{Alg}$ needs to sample at least $\Omega(\varepsilon^{-2})$   
     state-action sequences and $\Omega(\varepsilon^{-2})$ expert features to learn a $\varepsilon$-optimal policy according to the definition in \eqref{eq:optgoal}.
 \end{theorem}
@@ -386,7 +387,7 @@ The guarantees for FRA-IL read as follows.
     %bottom=0pt,
     width=\linewidth
   ]
-\begin{theorem} \textbf{Rate optimal upper bounds for Imitation Learning from features.\citep{moulin2025optimistically}}
+\begin{theorem} \textbf{Rate optimal upper bounds for Imitation Learning from features.\citepStr{moulin2025optimistically}}
     For any linear MDP, the algorithm FRA-IL outputs a policy $\piout$ which is $\varepsilon$-optimal sampling $\mathcal{O}(\varepsilon^{-2})$ state-action trajectories and expert features.
 \end{theorem}
 \end{tcolorbox}
@@ -395,7 +396,7 @@ Moreover, the bounds can not be improved in terms of $\varepsilon$ because of ou
 
 \paragraph{Practical take-away}
 From the above theoretical analysis, we learn that exploration in the policy update is crucial. In stark contrast, existing algorithms were neglecting this aspect.
-We therefore designed, inspired by theory above, a meta algorithm that injects exploration in existing algorithms to learn only from features in simulated robotics.
+We therefore designed, inspired by theory above, a meta algorithm \citeStr{viel2025soar} that injects exploration in existing algorithms to learn only from features in simulated robotics.
 Remarkably, as shown in \Cref{fig:SOAR}, we noticed a consistent improvement for any base algorithm on which we applied our exploration routine.
 \begin{figure}[t]
     \centering
@@ -441,7 +442,7 @@ For example, in finance, a human investor acts not only looking at the current s
 or information acquired elsewhere. Without access to such privileges, the learner can not hope to match 
 the expert distribution. However, there is still hope to perform similarly in terms of gained money, even though by taking different actions.
 \end{example}
-In our NeurIPS 2025 paper, \citep{moulin2025inverseqlearningrightoffline} we invent the first offline imitation learning which does not mimic the expert.
+In our NeurIPS 2025 paper, \citepStr{moulin2025inverse} we invent the first offline imitation learning which does not mimic the expert.
 Formally, the key idea is to avoid assuming access to a class $\PiE$ such that $\expertp \in \PiE$ at the cost of introducing structural assumptions on the environment.
 This translates into assumptions on the state action value functions $Q^\pi$ that for a given $\pi:\X\rightarrow \Delta_{\A}$ is defined as $Q^\pi(x,a) = \mathbb{E}^\pi[\sum^{\infty}_{h=0} \gamma^h r(X_h, A_h) | X_0, A_0 = x,a]$.
 In particular, we consider access to a class $\cQ$ such that it is expressive enough to either:
@@ -460,7 +461,7 @@ Our first, result is to show that (\textbf{Case II}) is more difficult than (\te
   ]
 \begin{theorem} \textbf{Under Case II offline learning is not possible.}
 There exists a family of MDPs and expert pairs such that if $\cQ$ satisfies \textbf{Case I},
-then the algorithm SPOIL \citep{moulin2025inverseqlearningrightoffline} learns a $\varepsilon$-optimal policy observing $\cO(\varepsilon^{-2})$ offline expert data, without any dependence on $\abs{\PiE}$.    
+then the algorithm SPOIL \citepStr{moulin2025inverse} learns a $\varepsilon$-optimal policy observing $\cO(\varepsilon^{-2})$ offline expert data, without any dependence on $\abs{\PiE}$.    
 At the same time, if $\cQ$ only satisfies \textbf{Case II}, no algorithm can learn.
 \end{theorem}
 \end{tcolorbox}
@@ -525,7 +526,7 @@ However, they rely on the assumption that we have access to the data-generating 
 which is often broken in practice, for instance, when smaller models are post-trained 
 using preference data (e.g.  the UltraFeedback dataset  \citep{cui2023ultrafeedback} ) generated by larger, proprietary systems 
 whose logits can not be accessed when fine-tuning the smaller models. 
-In the last chapter of my thesis, I remove this limitation with a new algorithm: PEPO.
+In the last chapter of my thesis, based on \citeStr{barla2026provably}, I remove this limitation with a new algorithm: PEPO.
 The central idea behind PEPO is to resort to \emph{pessimism via ensembles}: a technique as simple as unexplored in the context of LLM alignment, especially in the DPO setting.
 Concretely, PEPO trains an ensemble of $L$ lightweight DPO-style policies on disjoint subsets of the preference dataset, implemented via low-rank adapters \citep{hu2022lora}. Finally, at generation time, we use a certain notion of ensemble agreement to generate responses either via rejection sampling or approximating the (otherwise intractable) response-level normalization constant to the token-level counterpart.
 All in all, we obtain the following formal guarantees.
@@ -565,20 +566,23 @@ experiment on a 34B model, Yi-34B.
 
 \section{Conclusions}
 
-This work studied principled algorithms for learning good policies in decision-making problems when a reward function is not available \emph{as a learning signal}. Our fundamental contributions are: (i)~a precise characterization of the statistical complexity for learning equilibria in Markov games from data, with the first rate-optimal algorithm (RMAX-RAVI-UCB-ZERO-BC); (ii)~the first min-max optimal and computationally efficient algorithm for IL from features in Linear MDPs (FRA-IL); (iii)~the first offline IL algorithm that learns \emph{without requiring expert realizability} (SPOIL/OVI); and (iv)~the first DPO-like algorithm provably avoiding over-optimization without any knowledge of the data-generating policy (PEPO).
+This work studied principled algorithms for learning good policies in decision-making problems when a reward function is not available \emph{as a learning signal}. Our fundamental contributions are: 
 
+\begin{itemize}
+\item~a precise characterization of the statistical complexity for learning equilibria in Markov games from data, with the first rate-optimal algorithm (RMAX-RAVI-UCB-ZERO-BC); 
+\item~the first min-max optimal and computationally efficient algorithm for IL from features in Linear MDPs (FRA-IL); 
+\item~the first IL algorithms that learn \emph{without requiring expert realizability} (SPOIL/OVI); and 
+\item~the first DPO-like algorithm provably avoiding over-optimization without any knowledge of the data-generating policy (PEPO).
+\end{itemize}
 Despite these exciting results, several important directions remain open.
 
 \textbf{Beyond expected reward.}
 The suboptimality metric studied here is based on expected reward. However, small expected suboptimality does not exclude dangerous actions occurring with non-negligible probability. The uncertainty quantification techniques we developed for optimistic exploration (FRA-IL) and pessimistic regularization (PEPO) could be repurposed to detect high-risk situations and force the agent to abstain from acting. Designing no-regret abstention algorithms where the abstention cost reflects the missed opportunity is well studied in the bandit setting \citep{cortes2018online,neu2020fast,pasteris2024bandits}, but remains largely unexplored in multi-step decision-making, despite its clear practical relevance---as witnessed by benchmarks evaluating the abstention capability of modern LLMs \citep{fan2026halluhard}.
 
 \textbf{Coverage and test-time compute.}
-Expected reward also fails to capture the probability mass placed on the set of optimal actions (coverage \citep{chen2025coverage,wagenmaker2025posterior}). In modern LLM pipelines---where IL and alignment are followed by a test-time compute phase via Best of N (BoN) \citep{gui2024bonbon,huang2025best}---coverage rather than expected reward determines how effectively BoN improves quality. Extending the guarantees of this thesis to provide lower bounds on the success probability of BoN sampling from the output of an IL or alignment algorithm is therefore an important open problem.
+Expected reward also fails to capture the probability mass placed on the set of optimal actions (coverage \citep{chen2025coverage,wagenmaker2025posterior}). In modern LLM pipelines---where IL and alignment are followed by a test-time compute phase, often implemented via Best of N (BoN) \citep{gui2024bonbon,huang2025best}---coverage rather than expected reward determines how effectively BoN improves quality. Extending the guarantees of this thesis to provide lower bounds on the success probability of BoN sampling from the output of an IL or alignment algorithm is therefore an important open problem.
 
-\textbf{Continuous action spaces.}
-IL is widely applied in robotics where the action space is continuous, yet our computational efficiency guarantees crucially rely on finite action spaces---a limitation shared by recent IL theory works \citep{foster2024behavior,rohatgi2025computational,joshi2025learning}. Action quantization \citep{dadashi2021continuous} and environment interaction \citep{viano2022proximal,viano2024imitation,moulin2025optimistically} offer promising paths beyond this limitation.
-
-All in all, we believe that reward alone \emph{is not enough} to guide the design of complex modern decision-making systems, particularly in LLMs and robotics. The results presented here and in today's growing literature are, we believe, just the first steps of an exciting journey.
+All in all, the take-away is that reward alone \emph{is not enough} to guide the design of complex modern decision-making systems, particularly in LLMs and robotics. The developments in my thesis bypassed several limitations of existing works, however solving the missing steps listed in the conclusions still requires some steps of an exciting research journey.
 
 \newpage
 %\bibliographystyle{plainnat}
